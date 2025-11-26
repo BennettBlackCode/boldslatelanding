@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primary Colors */
+  --color-primary: #010100;
+  --color-primary-hover: #010100;
+  --color-headings: #010100;
+  --color-body: #545555;
+  --color-black: #010100;
+  
+  /* Background Colors */
+  --color-bg-primary: #FAF8F7;
+  --color-bg-white: #FFFFFF;
+  
+  /* Grey Palette - using contrast color */
+  --color-grey-50: #FAF8F7;
+  --color-grey-100: #FAF8F7;
+  --color-grey-200: #FAF8F7;
+  --color-grey-300: #FAF8F7;
+  --color-grey-400: #545555;
+  --color-grey-500: #545555;
+  --color-grey-900: #010100;
+  
+  /* Status Colors - using main palette */
+  --color-green-light: #FAF8F7;
+  --color-green-dark: #010100;
+  --color-yellow-light: #FAF8F7;
+  --color-yellow-dark: #010100;
+  --color-yellow-gold: #010100;
+  --color-yellow-accent: #FAF8F7;
+  
+  /* Blue Colors - using main palette */
+  --color-blue-brand: #010100;
+  --color-blue-light: #FAF8F7;
+  --color-blue-primary: #010100;
+  
+  /* Gradients - using main palette */
+  --gradient-brand: linear-gradient(0deg, #010100 0%, #545555 99.49%);
+  --gradient-hero: linear-gradient(180deg, #010100 0%, #545555 100%);
+
+  /* shadcn/ui CSS Variables */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0.4%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0.4%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0.4%;
+  --primary: 0 0% 0.4%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 98%;
+  --secondary-foreground: 0 0% 0.4%;
+  --muted: 0 0% 98%;
+  --muted-foreground: 0 0% 33%;
+  --accent: 0 0% 98%;
+  --accent-foreground: 0 0% 0.4%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 98%;
+  --input: 0 0% 98%;
+  --ring: 0 0% 0.4%;
+  --radius: 0.5rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-heading: var(--font-outfit), system-ui, sans-serif;
+  
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-headings: var(--color-headings);
+  --color-body: var(--color-body);
+  
+  --color-grey-50: var(--color-grey-50);
+  --color-grey-100: var(--color-grey-100);
+  
+  --background-image-gradient-brand: var(--gradient-brand);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-blue-brand: var(--color-blue-brand);
+  --color-blue-light: var(--color-blue-light);
+  --color-blue-primary: var(--color-blue-primary);
+  --color-green-light: var(--color-green-light);
+  --color-green-dark: var(--color-green-dark);
+  --color-yellow-light: var(--color-yellow-light);
+  --color-yellow-dark: var(--color-yellow-dark);
+  --color-yellow-gold: var(--color-yellow-gold);
+  --color-yellow-accent: var(--color-yellow-accent);
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-fade-in: fadeIn 1s ease-out forwards;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: #545555;
+  background-color: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: #010100;
+}
+
+/* Utility for sticky header slide if needed */
+.header-sticky {
+  @apply sticky top-0 z-50 transition-transform duration-300;
 }
