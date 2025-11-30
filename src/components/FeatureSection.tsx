@@ -36,7 +36,7 @@ export default function FeatureSection({
                 <div className="absolute bottom-0 left-0 w-full h-3 bg-[#FAF8F7] -rotate-1 rounded-sm -z-0 transform translate-y-1"></div>
             </div>
             
-            <h2 className="text-4xl md:text-5xl lg:text-[56px] font-semibold text-[#010100] leading-[1.1] tracking-tight">
+            <h2 className="text-[32px] md:text-[44px] lg:text-[52px] font-semibold text-[#010100] leading-[1.1] tracking-tight">
               {title}
             </h2>
             

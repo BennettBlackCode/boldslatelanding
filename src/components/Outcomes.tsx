@@ -11,7 +11,7 @@ export default function Outcomes() {
               Outcomes
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#010100] mb-6 leading-tight">
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-semibold text-[#010100] mb-6 leading-[1.1]">
             What We Deliver
           </h2>
           <p className="text-xl text-[#545555] font-light max-w-2xl mx-auto">

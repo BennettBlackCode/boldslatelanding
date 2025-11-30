@@ -20,7 +20,7 @@ export default function Hero() {
           </div>
           
           {/* Main Heading */}
-          <h1 className="text-[36px] md:text-[48px] lg:text-[56px] leading-[1.1] font-medium text-[#010100] mb-8">
+          <h1 className="text-[42px] md:text-[52px] lg:text-[60px] leading-[1.05] font-semibold text-[#010100] mb-8">
             Save your agency thousands of<br />
             hours of human time
           </h1>

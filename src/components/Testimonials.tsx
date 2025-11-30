@@ -50,7 +50,7 @@ const Testimonials = () => {
             <div className="border border-[#FAF8F7] py-1 px-4 rounded-lg text-[#010100]">Testimonials</div>
           </div>
 
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold tracking-tighter mt-5 text-center text-[#010100]">
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-semibold tracking-tight mt-5 text-center text-[#010100] leading-[1.1]">
             What Our Clients Say
           </h2>
           <p className="text-center mt-5 text-[#545555] opacity-75">
