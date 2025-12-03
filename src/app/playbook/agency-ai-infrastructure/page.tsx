@@ -672,7 +672,7 @@ export default function AgencyAIInfrastructurePlaybook() {
                 <p className="text-sm text-[#545555] leading-relaxed mb-4">
                   Everything documented above is replicable. The approaches are outlined. The tool stacks are listed. If you have technical capacity and time to invest, you can build these systems on your own infrastructure.
                 </p>
-                <p className="text-sm text-[#545555] mt-auto">
+                <p className="text-sm text-[#545555]">
                   <strong>Best for:</strong> Agencies with technical founders or in-house developers. 40-100 hours to invest per system.
                 </p>
               </div>
@@ -683,11 +683,8 @@ export default function AgencyAIInfrastructurePlaybook() {
                 <p className="text-sm text-[#545555] leading-relaxed mb-4">
                   We implement the systems you just read about: client reporting, zero-touch onboarding, SEO deliverables, 5-minute websites, or custom AI infrastructure. Pick one or stack them together.
                 </p>
-                <p className="text-sm text-[#545555] mb-1">
-                  <strong>Timeline:</strong> Hours for prebuilt AI infrastructure
-                </p>
                 <p className="text-sm text-[#545555] mb-4">
-                  <strong>Timeline:</strong> 2-4 weeks per custom system
+                  <strong>Timeline:</strong> Hours for prebuilt systems, 2-4 weeks for custom builds
                 </p>
                 <p className="text-sm text-[#545555] mb-4">
                   <strong>What&apos;s included:</strong> Discovery call, system design, full build and deployment, team training, 30 days of support post-launch.
