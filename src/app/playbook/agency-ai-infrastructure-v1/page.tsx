@@ -37,7 +37,7 @@
  */
 
 import Link from 'next/link';
-import { Download, Share2, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 // ============================================
 // Simple Table Component
@@ -140,20 +140,10 @@ export default function AgencyAIInfrastructurePlaybookV1() {
           
           {/* Document Header */}
           <header className="mb-8">
-            <div className="flex items-center justify-between mb-4">
+            <div className="mb-4">
               <p className="text-xs text-gray-500 uppercase tracking-wide">
                 Agency AI Infrastructure
               </p>
-              <div className="flex items-center gap-2">
-                <Link href="https://boldslate.com" className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-700 px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 transition-colors">
-                  <Share2 size={12} />
-                  Share
-                </Link>
-                <Link href="https://boldslate.com" className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-700 px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 transition-colors">
-                  <Download size={12} />
-                  PDF
-                </Link>
-              </div>
             </div>
             <p className="text-xs text-gray-400 mb-4">Last updated: December 2, 2024</p>
             <div className="border-b border-gray-200" />
