@@ -4,7 +4,7 @@
  * ============================================
  * 
  * This layout sets CUSTOM navbar config for all playbook pages:
- *   - ctaText: "Talk to us"
+ *   - ctaText: "Talk to Bennett"
  *   - ctaLink: "https://cal.com/boldslate/15mindemo"
  * 
  * Uses NavbarConfigSetter wrapper component.
@@ -24,7 +24,7 @@ export default function PlaybookLayout({
 }) {
   return (
     <NavbarConfigSetter 
-      ctaText="Talk to us" 
+      ctaText="Talk to Bennett" 
       ctaLink="https://cal.com/boldslate/ai-systems-consultation"
     >
       {/* All playbook pages show "Talk to us" by default */}
