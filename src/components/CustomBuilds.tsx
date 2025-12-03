@@ -21,7 +21,7 @@ export default function CustomBuilds() {
           
           <div className="order-2 lg:order-2 space-y-8 text-center lg:text-left">
             <div className="inline-block relative">
-                <span className="relative z-10 text-sm font-bold text-[#010100] uppercase tracking-widest">Custom Builds</span>
+                <span className="relative z-10 text-sm font-bold text-[#010100] uppercase tracking-widest">Pre-Built AI Systems</span>
                 <div className="absolute bottom-0 left-0 w-full h-3 bg-[#FAF8F7] -rotate-1 rounded-sm -z-0 transform translate-y-1"></div>
             </div>
             
@@ -31,19 +31,16 @@ export default function CustomBuilds() {
             
             <div className="space-y-6 text-lg md:text-xl text-[#545555] font-light leading-relaxed">
               <p>
-                Set your teams free to do more of their best work & we'll take care of the rest.
-              </p>
-              <p>
-                Book a call to discuss your processes with our team. You'll leave with a clear idea of where AI + Automation fit inside of your operations.
+                Set your teams free to do more of their best work - we'll handle the rest with ready-to-go AI systems that plug directly into your operations.
               </p>
             </div>
             
             <div className="pt-6">
               <Link 
-                href="https://cal.com/boldslate/ai-systems-consultation"
+                href="https://boldslate.com/catalogue"
                 className="inline-flex items-center justify-center gap-2 bg-[#010100] hover:bg-[#010100] text-white font-medium text-[18px] py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
-                Book Custom Build
+                Our Catalogue
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
               </Link>
             </div>
