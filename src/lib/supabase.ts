@@ -1,13 +1,16 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables. Check your .env.local file.');
-}
+// Create client only if env vars are present (allows build without Supabase)
+export const supabase: SupabaseClient | null = 
+  supabaseUrl && supabaseAnonKey 
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Check if Supabase is configured
+export const isSupabaseConfigured = () => !!supabase;
 
 // Helper function to track page events
 export async function trackEvent(eventData: {
@@ -16,6 +19,11 @@ export async function trackEvent(eventData: {
   visitor_id?: string;
   metadata?: Record<string, unknown>;
 }) {
+  if (!supabase) {
+    console.warn('Supabase not configured - skipping event tracking');
+    return { success: false, error: 'Supabase not configured' };
+  }
+
   try {
     const { error } = await supabase
       .from('page_events')

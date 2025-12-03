@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 
 export async function GET() {
   const results: Record<string, unknown> = {
@@ -8,9 +8,18 @@ export async function GET() {
     leads_table: 'checking...',
   };
 
+  // Check if Supabase is configured
+  if (!isSupabaseConfigured() || !supabase) {
+    return NextResponse.json({
+      timestamp: new Date().toISOString(),
+      connection: 'NOT_CONFIGURED',
+      message: 'Supabase environment variables are not set. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your environment.',
+    }, { status: 200 });
+  }
+
   try {
     // Test 1: Basic connection by listing tables
-    const { data: tables, error: tablesError } = await supabase
+    const { error: tablesError } = await supabase
       .from('leads')
       .select('*', { count: 'exact', head: true });
 
