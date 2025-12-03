@@ -1,0 +1,59 @@
+import { NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
+
+export async function GET() {
+  const results: Record<string, unknown> = {
+    timestamp: new Date().toISOString(),
+    connection: 'testing...',
+    leads_table: 'checking...',
+  };
+
+  try {
+    // Test 1: Basic connection by listing tables
+    const { data: tables, error: tablesError } = await supabase
+      .from('leads')
+      .select('*', { count: 'exact', head: true });
+
+    if (tablesError) {
+      results.leads_table = {
+        exists: false,
+        error: tablesError.message,
+        hint: tablesError.hint || 'Table may not exist or RLS policy blocking access',
+      };
+    } else {
+      results.leads_table = {
+        exists: true,
+        message: 'Successfully connected to leads table!',
+      };
+    }
+
+    // Test 2: Try to count rows in leads table
+    const { count, error: countError } = await supabase
+      .from('leads')
+      .select('*', { count: 'exact', head: true });
+
+    if (!countError) {
+      results.leads_count = count;
+    }
+
+    // Test 3: Get sample data from leads (first 5 rows)
+    const { data: sampleData, error: sampleError } = await supabase
+      .from('leads')
+      .select('*')
+      .limit(5);
+
+    if (!sampleError && sampleData) {
+      results.sample_leads = sampleData;
+      results.columns = sampleData.length > 0 ? Object.keys(sampleData[0]) : [];
+    }
+
+    results.connection = 'SUCCESS';
+    
+  } catch (err) {
+    results.connection = 'FAILED';
+    results.error = err instanceof Error ? err.message : 'Unknown error';
+  }
+
+  return NextResponse.json(results, { status: 200 });
+}
+

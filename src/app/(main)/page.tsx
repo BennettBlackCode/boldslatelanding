@@ -6,6 +6,45 @@ import Outcomes from '@/components/Outcomes';
 import FeatureSection from '@/components/FeatureSection';
 import CallToAction from '@/components/CallToAction';
 
+/**
+ * ============================================
+ * 🎯 NAVBAR CUSTOMIZATION (for AI agents / future devs)
+ * ============================================
+ * 
+ * The navbar CTA button (top right) can be customized PER PAGE.
+ * This page uses the DEFAULT config: "Schedule A Call"
+ * 
+ * To customize on any page, add 'use client' and use the hook:
+ * 
+ * ```tsx
+ * 'use client';
+ * import { useNavbarConfig } from '@/components/NavbarContext';
+ * 
+ * export default function MyPage() {
+ *   // Option 1: Change button text and link
+ *   useNavbarConfig({ 
+ *     ctaText: "Book Demo", 
+ *     ctaLink: "https://cal.com/boldslate/demo" 
+ *   });
+ * 
+ *   // Option 2: Hide the button entirely
+ *   useNavbarConfig({ showCta: false });
+ * 
+ *   // Option 3: Change everything
+ *   useNavbarConfig({ 
+ *     ctaText: "Get Started", 
+ *     ctaLink: "/signup",
+ *     showCta: true 
+ *   });
+ * 
+ *   return <div>...</div>;
+ * }
+ * ```
+ * 
+ * See: src/components/NavbarContext.tsx for implementation details
+ * ============================================
+ */
+
 export default function Home() {
   return (
     <div className="space-y-0">
@@ -76,3 +115,4 @@ export default function Home() {
     </div>
   );
 }
+
