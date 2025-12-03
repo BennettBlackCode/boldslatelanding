@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className="relative w-[160px] md:w-[180px] h-[40px] md:h-[50px] flex-shrink-0 transition-opacity hover:opacity-80">
            <Link href="/">
              <Image 
-               src="https://boldslate.com/wp-content/uploads/2025/01/Bold-Slate-Logo-Light-8.png" 
+               src="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Bold-Slate-Logo-Light-8.webp" 
                alt="Bold Slate"
                fill
                className="object-contain object-left"

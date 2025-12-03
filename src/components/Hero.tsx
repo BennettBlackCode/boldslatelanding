@@ -11,7 +11,7 @@ export default function Hero() {
           {/* Social Proof Image */}
           <div className="mb-10 flex justify-center">
             <Image
-              src="https://boldslate.com/wp-content/uploads/2025/05/Your-paragraph-text-6.png"
+              src="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/above%20header%20image.webp"
               alt="1,000+ Systems Built"
               width={400}
               height={80}

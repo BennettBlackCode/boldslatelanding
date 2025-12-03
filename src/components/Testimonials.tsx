@@ -6,19 +6,19 @@ import { motion } from "motion/react";
 const testimonialsData = [
   {
     text: "Bennett and his team have helped us eliminate tons of manual work, boost our client retention, and they are very responsive & skilled. 10/10 experience.",
-    image: "https://boldslate.com/wp-content/uploads/2025/05/Screenshot-2025-05-26-at-1.24.41%E2%80%AFPM-150x150.png",
+    image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/lane%20image.png",
     name: "Lane Houk",
     role: "CEO, Quantum Agency",
   },
   {
     text: "Bold Slate helped us 10x our revenue with the AI systems they built - no chance we’d be where we are without them. If you’re not using AI and automation yet, you’re falling behind.",
-    image: "https://boldslate.com/wp-content/uploads/2025/05/Screenshot-2025-05-26-at-1.47.11%E2%80%AFPM-150x150.png",
+    image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/vince%20image.png",
     name: "Vincent Triffileti",
     role: "CEO, Clinic Lab",
   },
   {
     text: "They’ve built some super innovative automations that feel like they’re changing the game. They’re responsive, easy to work with, and actually know how to build real stuff.",
-    image: "https://boldslate.com/wp-content/uploads/2025/05/Screenshot-2025-05-26-at-1.46.34%E2%80%AFPM-150x150.png",
+    image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/frankie%20image.png",
     name: "Frankie Fihn",
     role: "Author, Beyond The Agency Box",
   },

@@ -12,7 +12,7 @@ export default function Footer() {
             <Link href="/" className="inline-block transition-opacity hover:opacity-80">
               <div className="relative w-[180px] h-[50px]">
                 <Image
-                  src="https://boldslate.com/wp-content/uploads/2025/01/Bold-Slate-Logo-Light-8.png"
+                  src="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Bold-Slate-Logo-Light-8.webp"
                   alt="Bold Slate"
                   fill
                   className="object-contain object-left"

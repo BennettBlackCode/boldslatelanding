@@ -11,7 +11,7 @@ export default function CustomBuilds() {
             <div className="relative w-full max-w-[500px] aspect-square animate-float">
               <div className="absolute inset-0 bg-[#010100]/5 rounded-full blur-3xl scale-90 -z-10" />
               <Image
-                src="https://boldslate.com/wp-content/uploads/2025/01/undraw_read-notes_7itt.svg"
+                src="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/your%20biz%20on%20self%20fulfillment%20image.svg"
                 alt="Custom Builds Illustration"
                 fill
                 className="object-contain"

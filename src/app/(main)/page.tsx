@@ -67,7 +67,7 @@ export default function Home() {
             </p>
           </>
         }
-        imageSrc="https://boldslate.com/wp-content/uploads/2025/01/undraw_predictive-analytics_6vi1.svg"
+        imageSrc="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/automated%20image%20workflows.svg"
         imageAlt="Automated Workflows"
         reverse={false}
         className="bg-[#FAF8F7]"
@@ -86,7 +86,7 @@ export default function Home() {
             </p>
           </>
         }
-        imageSrc="https://boldslate.com/wp-content/uploads/2025/01/undraw_folder-files_5www.svg"
+        imageSrc="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/trained%20on%20your%20business%20image.svg"
         imageAlt="Trained On your Business"
         reverse={true}
         className="bg-white"
@@ -105,7 +105,7 @@ export default function Home() {
             </p>
           </>
         }
-        imageSrc="https://boldslate.com/wp-content/uploads/2025/01/undraw_creative-experiment_bzae.svg"
+        imageSrc="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/complete%20tasks%20on%20autopilot%20image.svg"
         imageAlt="Complete Tasks on autopilot"
         reverse={false}
         className="bg-[#FAF8F7]"
