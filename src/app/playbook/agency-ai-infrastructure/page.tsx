@@ -231,7 +231,7 @@ export default function AgencyAIInfrastructurePlaybook() {
                 They&apos;ve just stopped rebuilding everything from scratch.
               </p>
               <p>
-                Same website structure they&apos;ve built forty times - they templatized it once and now it deploys in minutes. Same client reports every month - they automated the data pull and now AI writes the first draft. Same onboarding chaos with every new client - they systematized it and now it runs without them.
+                Same website structure they&apos;ve built forty times: they templatized it once and now it deploys in minutes. Same client reports every month: they automated the data pull and now AI writes the first draft. Same onboarding chaos with every new client: they systematized it and now it runs without them.
               </p>
               <p>
                 These aren&apos;t agencies with bigger teams or better talent. They&apos;re agencies that figured out something simple: speed is the new premium. Clients don&apos;t pay for how long it took. They pay for results. The faster you deliver, the more you can take on, the higher your margins climb.
