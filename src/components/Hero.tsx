@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import Container from './Container';
+import { trackEvent } from './FacebookPixel';
 
 export default function Hero() {
   return (
@@ -33,6 +36,7 @@ export default function Hero() {
           {/* Single CTA Button */}
           <Link 
             href="https://cal.com/boldslate/ai-systems-consultation"
+            onClick={() => trackEvent('Schedule', { content_name: 'Hero CTA' })}
             className="inline-flex items-center justify-center gap-2 bg-[#010100] hover:bg-[#010100] text-white font-medium text-[18px] py-4 px-8 rounded-xl transition-all duration-300"
           >
             Book A Free Automation Discovery Call

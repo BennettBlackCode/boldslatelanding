@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Outfit } from "next/font/google";
 import "./globals.css";
 import { NavbarProvider } from "@/components/NavbarContext";
+import FacebookPixel from "@/components/FacebookPixel";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${outfit.variable} antialiased bg-white text-body`}
       >
+        <FacebookPixel />
         <NavbarProvider>
           {children}
         </NavbarProvider>

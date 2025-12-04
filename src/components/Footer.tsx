@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import Container from './Container';
+import { trackEvent } from './FacebookPixel';
 
 export default function Footer() {
   return (
@@ -26,6 +29,7 @@ export default function Footer() {
               <Link 
                 href="https://cal.com/boldslate/ai-systems-consultation"
                 target="_blank"
+                onClick={() => trackEvent('Schedule', { content_name: 'Footer Lets Talk' })}
                 className="inline-flex items-center justify-center bg-[#010100] hover:bg-[#010100] text-white font-medium text-base py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
               >
                 Let's Talk
@@ -37,13 +41,25 @@ export default function Footer() {
           <div className="md:col-span-5 lg:col-span-5 md:text-right space-y-8 pt-4 md:pt-0">
             <h3 className="font-semibold text-[#010100] text-lg uppercase tracking-wider">Company</h3>
             <div className="flex flex-col md:items-end gap-4">
-              <Link href="https://boldslate.firstpromoter.com/" className="text-[#545555] hover:text-[#010100] transition-colors font-light text-lg">
+              <Link 
+                href="https://boldslate.firstpromoter.com/" 
+                onClick={() => trackEvent('Lead', { content_name: 'Affiliate Signup' })}
+                className="text-[#545555] hover:text-[#010100] transition-colors font-light text-lg"
+              >
                 Become An Affiliate
               </Link>
-              <Link href="https://boldslate.firstpromoter.com/login" className="text-[#545555] hover:text-[#010100] transition-colors font-light text-lg">
+              <Link 
+                href="https://boldslate.firstpromoter.com/login" 
+                onClick={() => trackEvent('ViewContent', { content_name: 'Affiliate Dashboard' })}
+                className="text-[#545555] hover:text-[#010100] transition-colors font-light text-lg"
+              >
                 Affiliate Dashboard
               </Link>
-              <Link href="https://1clickwebsite.ai/" className="text-[#545555] hover:text-[#010100] transition-colors font-light text-lg">
+              <Link 
+                href="https://1clickwebsite.ai/" 
+                onClick={() => trackEvent('ViewContent', { content_name: '1ClickWebsite' })}
+                className="text-[#545555] hover:text-[#010100] transition-colors font-light text-lg"
+              >
                 1ClickWebsite.ai
               </Link>
             </div>

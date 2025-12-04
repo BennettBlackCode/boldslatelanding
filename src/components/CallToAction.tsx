@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import Container from './Container';
 import { ArrowRight, Sparkles, Clock, Zap } from 'lucide-react';
+import { trackEvent } from './FacebookPixel';
 
 export default function CallToAction() {
   return (
@@ -52,6 +55,7 @@ export default function CallToAction() {
           <Link 
             href="https://cal.com/boldslate/ai-systems-consultation"
             target="_blank"
+            onClick={() => trackEvent('Schedule', { content_name: 'CTA Section Book Call' })}
             className="group inline-flex items-center justify-center gap-3 bg-white hover:bg-[#FAF8F7] text-[#010100] font-semibold text-lg py-5 px-10 rounded-2xl transition-all duration-300 shadow-2xl shadow-white/10 hover:shadow-white/20 hover:-translate-y-1"
           >
             Book Your Free Call

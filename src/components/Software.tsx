@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import Container from './Container';
 import { ArrowUpRight } from 'lucide-react';
+import { trackEvent } from './FacebookPixel';
 
 export default function Software() {
   return (
@@ -33,7 +36,11 @@ export default function Software() {
               </span>
             </div>
             <h3 className="text-2xl font-semibold text-[#010100] mb-3 group-hover:text-[#010100] transition-colors">
-              <Link href="https://1clickwebsite.ai/" className="focus:outline-none">
+              <Link 
+                href="https://1clickwebsite.ai/" 
+                onClick={() => trackEvent('ViewContent', { content_name: '1ClickWebsite Card' })}
+                className="focus:outline-none"
+              >
                 <span className="absolute inset-0" aria-hidden="true" />
                 1clickwebsite.ai
               </Link>
@@ -55,7 +62,11 @@ export default function Software() {
               </span>
             </div>
             <h3 className="text-2xl font-semibold text-[#010100] mb-3 group-hover:text-[#010100] transition-colors">
-              <Link href="https://whitelabel.1clickwebsite.ai/" className="focus:outline-none">
+              <Link 
+                href="https://whitelabel.1clickwebsite.ai/" 
+                onClick={() => trackEvent('ViewContent', { content_name: '1ClickWebsite Enterprise' })}
+                className="focus:outline-none"
+              >
                 <span className="absolute inset-0" aria-hidden="true" />
                 1clickwebsite.ai enterprise
               </Link>

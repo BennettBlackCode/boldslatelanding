@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Container from './Container';
 import { useNavbarContext } from './NavbarContext';
+import { trackEvent } from './FacebookPixel';
 
 /**
  * Navbar Component
@@ -20,6 +21,20 @@ export default function Navbar() {
   const { config } = useNavbarContext();
   
   const { ctaText, ctaLink, showCta } = config;
+
+  const handleCtaClick = () => {
+    // Track based on the CTA text
+    if (ctaText.toLowerCase().includes('call') || ctaText.toLowerCase().includes('talk') || ctaText.toLowerCase().includes('schedule')) {
+      trackEvent('Schedule', { content_name: `Navbar: ${ctaText}` });
+    } else if (ctaText.toLowerCase().includes('affiliate')) {
+      trackEvent('Lead', { content_name: `Navbar: ${ctaText}` });
+    } else if (ctaText.toLowerCase().includes('1click')) {
+      trackEvent('ViewContent', { content_name: `Navbar: ${ctaText}` });
+    } else {
+      trackEvent('ViewContent', { content_name: `Navbar: ${ctaText}` });
+    }
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#FAF8F7] h-[90px] flex items-center transition-all duration-300 shadow-sm">
       <Container className="w-full flex items-center justify-between">
@@ -38,6 +53,7 @@ export default function Navbar() {
           <div className="flex-shrink-0 ml-4">
              <Link 
                href={ctaLink}
+               onClick={handleCtaClick}
                className="inline-flex items-center justify-center bg-[#010100] hover:bg-[#1a1a1a] text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] text-sm md:text-base shadow-lg hover:shadow-xl whitespace-nowrap"
              >
                {ctaText}
