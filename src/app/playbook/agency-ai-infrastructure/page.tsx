@@ -25,7 +25,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ExternalLink, ArrowUp } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import AnalyticsProvider from './AnalyticsProvider';
 
 // ============================================
@@ -115,39 +115,57 @@ function Divider() {
 }
 
 // ============================================
-// Floating Back to Top Button
+// Shared Sections Config (used by TOC and SectionNav)
+// Update labels here to change both places
 // ============================================
 
-function FloatingBackToTop() {
-  const [isVisible, setIsVisible] = useState(false);
+const SECTIONS = [
+  { id: 'context', label: 'Context' },
+  { id: 'system-1', label: 'System #1: From 5 Hours to 15 Minutes: Client Reporting' },
+  { id: 'system-2', label: 'System #2: Zero-Touch Client Onboarding' },
+  { id: 'system-3', label: 'System #3: 30 Days of SEO Work - Delivered Day One' },
+  { id: 'system-4', label: 'System #4: 5 Minute SEO Websites' },
+  { id: 'system-5', label: 'System #5: Custom AI Infrastructure For Agencies' },
+  { id: 'scale', label: 'What This Means At Scale' },
+  { id: 'implementation', label: 'Implementation Options' },
+  { id: 'references', label: 'References & Resources' },
+];
 
-  useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 500) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
+// ============================================
+// Section Navigation (mini TOC at bottom of each section)
+// ============================================
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
-  }, []);
-
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+function SectionNav({ currentSection }: { currentSection: string }) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const yOffset = -140;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className={`fixed bottom-6 right-6 z-50 p-3 bg-[#010100] text-white rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-      }`}
-      aria-label="Back to top"
-    >
-      <ArrowUp size={20} />
-    </button>
+    <div className="mt-8">
+      <p className="text-[10px] text-gray-400 uppercase tracking-wider mb-2">Jump to</p>
+      <div className="flex flex-col gap-1">
+        {SECTIONS.map((section) => (
+          <a
+            key={section.id}
+            href={`#${section.id}`}
+            onClick={(e) => handleClick(e, section.id)}
+            className={`text-[11px] leading-tight transition-colors ${
+              section.id === currentSection
+                ? 'text-gray-300 cursor-default pointer-events-none'
+                : 'text-gray-400 hover:text-[#010100]'
+            }`}
+          >
+            {section.label}
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -158,8 +176,6 @@ function FloatingBackToTop() {
 export default function AgencyAIInfrastructurePlaybook() {
   return (
     <AnalyticsProvider>
-      {/* Floating Back to Top Button */}
-      <FloatingBackToTop />
       
       {/* Page Background */}
       <div className="min-h-screen bg-[#FAF8F7] py-8 md:py-12 lg:py-16">
@@ -192,15 +208,9 @@ export default function AgencyAIInfrastructurePlaybook() {
           <nav className="bg-[#FAF8F7] rounded-md p-4 sm:p-6 border-l-4 border-gray-300 mb-10">
             <p className="text-sm font-medium uppercase tracking-wide text-gray-600 mb-4">On This Page</p>
             <div className="space-y-0.5">
-              <TOCLink href="#context">Context</TOCLink>
-              <TOCLink href="#system-1">System #1: From 5 Hours to 15 Minutes: Client Reporting</TOCLink>
-              <TOCLink href="#system-2">System #2: Zero-Touch Client Onboarding</TOCLink>
-              <TOCLink href="#system-3">System #3: 30 Days of SEO Work - Delivered Day One</TOCLink>
-              <TOCLink href="#system-4">System #4: 5 Minute SEO Websites</TOCLink>
-              <TOCLink href="#system-5">System #5: Custom AI Infrastructure For Agencies</TOCLink>
-              <TOCLink href="#scale">What This Means At Scale</TOCLink>
-              <TOCLink href="#implementation">Implementation Options</TOCLink>
-              <TOCLink href="#references">References & Resources</TOCLink>
+              {SECTIONS.map((section) => (
+                <TOCLink key={section.id} href={`#${section.id}`}>{section.label}</TOCLink>
+              ))}
             </div>
           </nav>
 
@@ -249,6 +259,8 @@ export default function AgencyAIInfrastructurePlaybook() {
                 className="w-full h-auto"
               />
             </div>
+
+            <SectionNav currentSection="context" />
           </section>
 
           <Divider />
@@ -320,6 +332,8 @@ export default function AgencyAIInfrastructurePlaybook() {
               <li>• <strong>Client retention increased by 3+ months average</strong> - consistent communication builds trust</li>
               <li>• <strong>CSMs handle 3x more clients</strong> without burning out on report writing</li>
             </ul>
+
+            <SectionNav currentSection="system-1" />
           </section>
 
           <Divider />
@@ -394,6 +408,8 @@ export default function AgencyAIInfrastructurePlaybook() {
               <li>• <strong>Zero steps forgotten</strong> - the system doesn&apos;t forget</li>
               <li>• <strong>Clients start receiving value faster</strong> - better first impression</li>
             </ul>
+
+            <SectionNav currentSection="system-2" />
           </section>
 
           <Divider />
@@ -463,6 +479,8 @@ export default function AgencyAIInfrastructurePlaybook() {
               <li>• <strong>Standardized deliverable quality</strong> - no more variance between team members</li>
               <li>• <strong>20% increase in referrals</strong> from faster, more impressive starts</li>
             </ul>
+
+            <SectionNav currentSection="system-3" />
           </section>
 
           <Divider />
@@ -533,6 +551,8 @@ export default function AgencyAIInfrastructurePlaybook() {
               <li>• <strong>Zero change request bottlenecks</strong> - clients can request updates through AI agent</li>
               <li>• <strong>Capacity to onboard 6+ additional clients per month</strong> without hiring</li>
             </ul>
+
+            <SectionNav currentSection="system-4" />
           </section>
 
           <Divider />
@@ -598,6 +618,8 @@ export default function AgencyAIInfrastructurePlaybook() {
               <li>• <strong>You own the infrastructure</strong> - it runs in your environment</li>
               <li>• <strong>Scales with your business</strong> - built to handle growth</li>
             </ul>
+
+            <SectionNav currentSection="system-5" />
           </section>
 
           <Divider />
@@ -652,6 +674,8 @@ export default function AgencyAIInfrastructurePlaybook() {
                 </ul>
               </div>
             </div>
+
+            <SectionNav currentSection="scale" />
           </section>
 
           <Divider />
@@ -705,6 +729,8 @@ export default function AgencyAIInfrastructurePlaybook() {
                 </div>
               </div>
             </div>
+
+            <SectionNav currentSection="implementation" />
           </section>
 
           <Divider />
@@ -748,6 +774,8 @@ export default function AgencyAIInfrastructurePlaybook() {
                 </ul>
               </div>
             </div>
+
+            <SectionNav currentSection="references" />
 
             <div className="mt-8 pt-6 border-t border-gray-200">
               <p className="text-sm text-gray-400">Last updated: November 2025</p>
