@@ -204,18 +204,6 @@ export default function AgencyAIInfrastructurePlaybook() {
             </div>
           </nav>
 
-          {/* Hero Image */}
-          <div className="mb-12 rounded-lg overflow-hidden border border-gray-200">
-            <Image
-              src="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Screenshot%202025-12-03%20at%203.24.56%20AM.png"
-              alt="AI Infrastructure Systems"
-              width={736}
-              height={89}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-
           {/* ============================================ */}
           {/* CONTEXT */}
           {/* ============================================ */}
@@ -249,6 +237,17 @@ export default function AgencyAIInfrastructurePlaybook() {
               <p>
                 The agencies that figure this out will own the next five years. The ones that don&apos;t will keep wondering why it feels harder every year.
               </p>
+            </div>
+
+            {/* Infrastructure Image */}
+            <div className="mt-8 rounded-lg overflow-hidden border border-gray-200">
+              <Image
+                src="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Screenshot%202025-12-03%20at%203.24.56%20AM.png"
+                alt="AI Infrastructure Systems"
+                width={736}
+                height={89}
+                className="w-full h-auto"
+              />
             </div>
           </section>
 
