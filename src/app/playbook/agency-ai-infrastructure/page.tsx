@@ -201,7 +201,7 @@ export default function AgencyAIInfrastructurePlaybook() {
 
           {/* Subtitle */}
           <p className="text-lg text-[#545555] leading-relaxed mb-8">
-            Five automation systems that eliminate 100+ hours of manual work per week. Full breakdowns, tool stacks, and build approaches included.
+            Five AI systems that eliminate 100+ hours of manual work per week. Full breakdowns, tool stacks, and build approaches included.
           </p>
 
           {/* Table of Contents */}
