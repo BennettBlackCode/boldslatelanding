@@ -26,6 +26,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink, ArrowUp } from 'lucide-react';
+import AnalyticsProvider from './AnalyticsProvider';
 
 // ============================================
 // Simple Table Component
@@ -156,7 +157,7 @@ function FloatingBackToTop() {
 
 export default function AgencyAIInfrastructurePlaybook() {
   return (
-    <>
+    <AnalyticsProvider>
       {/* Floating Back to Top Button */}
       <FloatingBackToTop />
       
@@ -759,6 +760,6 @@ export default function AgencyAIInfrastructurePlaybook() {
 
         </article>
       </div>
-    </>
+    </AnalyticsProvider>
   );
 }
