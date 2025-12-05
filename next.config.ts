@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
         hostname: 'ojiytsplzyffdgobssut.supabase.co',
       },
     ],
+    // Use unoptimized images for Cloudflare Pages (no server-side optimization)
+    unoptimized: true,
   },
 };
 
