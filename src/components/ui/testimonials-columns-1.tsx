@@ -8,6 +8,7 @@ interface Testimonial {
   image: string;
   name: string;
   role: string;
+  link?: string;
 }
 
 export const TestimonialsColumn = (props: {
@@ -32,8 +33,14 @@ export const TestimonialsColumn = (props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div className="p-10 rounded-3xl border border-[#FAF8F7] shadow-lg shadow-[#010100]/10 max-w-xs w-full bg-white" key={i}>
+              {props.testimonials.map(({ text, image, name, role, link }, i) => (
+                <a
+                  href={link ? `${link}?ref=boldslate.com` : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-10 rounded-3xl border border-[#FAF8F7] shadow-lg shadow-[#010100]/10 max-w-xs w-full bg-white block transition-all duration-300 ${link ? 'hover:shadow-xl hover:scale-[1.02] cursor-pointer' : ''}`}
+                  key={i}
+                >
                   <div className="text-[#545555]">{text}</div>
                   <div className="flex items-center gap-2 mt-5">
                     <img
@@ -48,7 +55,7 @@ export const TestimonialsColumn = (props: {
                       <div className="leading-5 text-[#545555] opacity-60 tracking-tight">{role}</div>
                     </div>
                   </div>
-                </div>
+                </a>
               ))}
             </React.Fragment>
           )),

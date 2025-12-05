@@ -9,31 +9,35 @@ const testimonialsData = [
     image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/lane%20image.png",
     name: "Lane Houk",
     role: "CEO, Quantum Agency",
+    link: "http://quantumagency.io/",
   },
   {
-    text: "Bold Slate helped us 10x our revenue with the AI systems they built - no chance we’d be where we are without them. If you’re not using AI and automation yet, you’re falling behind.",
+    text: "Bold Slate helped us 10x our revenue with the AI systems they built - no chance we'd be where we are without them. If you're not using AI and automation yet, you're falling behind.",
     image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/vince%20image.png",
     name: "Vincent Triffileti",
-    role: "CEO, Clinic Lab",
+    role: "CEO, VGT Media",
+    link: "https://vgtmedia.com/",
   },
   {
-    text: "They’ve built some super innovative automations that feel like they’re changing the game. They’re responsive, easy to work with, and actually know how to build real stuff.",
+    text: "They've built some super innovative automations that feel like they're changing the game. They're responsive, easy to work with, and actually know how to build real stuff.",
     image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/frankie%20image.png",
     name: "Frankie Fihn",
     role: "Author, Beyond The Agency Box",
+    link: "https://beyondtheagencybox.com/",
+  },
+  {
+    text: "Bold Slate built us a Custom Automation Solution that saved our team over 96 hours of monthly repetitive work. Highly Recommend!",
+    image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Ibrahim%20Barhumi.png",
+    name: "Abe Barhumi",
+    role: "VIS Mountain",
+    link: "https://vismountain.com/",
   },
 ];
 
-// Duplicate testimonials to fill the grid for the animation
-const testimonials = [
-  ...testimonialsData,
-  ...testimonialsData,
-  ...testimonialsData
-];
-
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
+// Distribute testimonials across columns for varied display
+const firstColumn = [testimonialsData[0], testimonialsData[1], testimonialsData[2]];
+const secondColumn = [testimonialsData[3], testimonialsData[0], testimonialsData[2]];
+const thirdColumn = [testimonialsData[1], testimonialsData[3], testimonialsData[0]];
 
 const Testimonials = () => {
   return (
