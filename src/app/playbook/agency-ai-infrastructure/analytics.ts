@@ -3,7 +3,12 @@
 // ============================================
 // Landing Page Analytics Tracking Script
 // Tracks: User ID, UTM params, time on page, scroll depth, device type
-// Sends data to N8N webhook on page load and page exit
+// Sends data to N8N webhook on page load, page exit, and periodic heartbeats
+// 
+// RELIABILITY FEATURES:
+// - Heartbeat pings every 30 seconds (so you know when they were last active)
+// - Multiple exit detection: visibilitychange + blur + beforeunload + pagehide
+// - Tab switch detection fires exit event immediately
 // ============================================
 
 // Using local API proxy to bypass ad blockers
@@ -11,6 +16,9 @@ const WEBHOOK_URL = '/api/track';
 
 // Lead magnet identifier for this specific page
 const LEAD_MAGNET_SLUG = 'agency-ai-infrastructure';
+
+// Heartbeat interval in milliseconds (60 seconds)
+const HEARTBEAT_INTERVAL = 60000;
 
 // ============================================
 // Type Definitions
@@ -25,7 +33,7 @@ interface TrackingData {
   time_on_page_seconds: number;
   max_scroll_percent: number;
   device_type: 'mobile' | 'tablet' | 'desktop';
-  event_type: 'page_open' | 'page_exit';
+  event_type: 'page_open' | 'page_exit' | 'heartbeat' | 'tab_hidden' | 'tab_visible';
   timestamp: string;
   page_url: string;
   lead_magnet_slug: string;
@@ -39,6 +47,8 @@ let pageLoadTime: number = 0;
 let maxScrollPercent: number = 0;
 let trackingData: Partial<TrackingData> = {};
 let isInitialized: boolean = false;
+let heartbeatInterval: NodeJS.Timeout | null = null;
+let hasPageExitFired: boolean = false; // Prevent duplicate exit events
 
 // ============================================
 // Utility Functions
@@ -119,15 +129,15 @@ function getTimestamp(): string {
 /**
  * Send tracking data to webhook
  */
-function sendTrackingEvent(eventType: 'page_open' | 'page_exit'): boolean {
+function sendTrackingEvent(eventType: 'page_open' | 'page_exit' | 'heartbeat' | 'tab_hidden' | 'tab_visible'): boolean {
   const payload: TrackingData = {
     id: trackingData.id || null,
     utm_source: trackingData.utm_source || null,
     utm_medium: trackingData.utm_medium || null,
     utm_campaign: trackingData.utm_campaign || null,
     utm_content: trackingData.utm_content || null,
-    time_on_page_seconds: eventType === 'page_open' ? 0 : getTimeOnPage(),
-    max_scroll_percent: eventType === 'page_open' ? maxScrollPercent : maxScrollPercent,
+    time_on_page_seconds: getTimeOnPage(),
+    max_scroll_percent: maxScrollPercent,
     device_type: trackingData.device_type || 'desktop',
     event_type: eventType,
     timestamp: getTimestamp(),
@@ -138,8 +148,11 @@ function sendTrackingEvent(eventType: 'page_open' | 'page_exit'): boolean {
   console.log(`[Analytics] 📊 Sending ${eventType} event:`, payload);
 
   try {
-    // Use sendBeacon for reliability (especially on page close)
-    if (navigator.sendBeacon) {
+    // Use sendBeacon for exit/hidden events (more reliable during page unload)
+    // Use fetch for heartbeats and visible events (more reliable for regular requests)
+    const useBeacon = eventType === 'page_exit' || eventType === 'tab_hidden';
+    
+    if (useBeacon && navigator.sendBeacon) {
       const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
       const success = navigator.sendBeacon(WEBHOOK_URL, blob);
       
@@ -147,7 +160,7 @@ function sendTrackingEvent(eventType: 'page_open' | 'page_exit'): boolean {
         console.log(`[Analytics] ✅ ${eventType} event sent successfully via sendBeacon`);
       } else {
         console.warn(`[Analytics] ⚠️ sendBeacon returned false, trying fetch...`);
-        // Fallback to fetch
+        // Fallback to fetch with keepalive
         fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -157,8 +170,7 @@ function sendTrackingEvent(eventType: 'page_open' | 'page_exit'): boolean {
       }
       return success;
     } else {
-      // Fallback for browsers without sendBeacon
-      console.log('[Analytics] 📡 sendBeacon not available, using fetch...');
+      // Use fetch for heartbeats and regular events
       fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -188,24 +200,95 @@ function handleScroll(): void {
  * Handle page unload - send exit event
  */
 function handlePageExit(): void {
+  if (hasPageExitFired) {
+    console.log('[Analytics] ⏭️ Page exit already fired, skipping duplicate...');
+    return;
+  }
+  hasPageExitFired = true;
+  stopHeartbeat();
   console.log('[Analytics] 👋 Page exit detected, sending final tracking data...');
   sendTrackingEvent('page_exit');
 }
 
 /**
- * Handle visibility change (for mobile tab switching)
- * Fires on both exit AND return - treats returning as a new visit
+ * Handle visibility change (for tab switching)
+ * Fires tab_hidden when user switches away, tab_visible when they return
+ * This is MORE RELIABLE than beforeunload for tab switches
  */
 function handleVisibilityChange(): void {
   if (document.visibilityState === 'hidden') {
-    console.log('[Analytics] 👁️ Page hidden, sending exit event...');
-    sendTrackingEvent('page_exit');
+    console.log('[Analytics] 👁️ Page hidden (tab switch/minimize), sending tab_hidden event...');
+    stopHeartbeat();
+    sendTrackingEvent('tab_hidden');
   } else if (document.visibilityState === 'visible' && isInitialized) {
-    console.log('[Analytics] 👁️ Page visible again, treating as new visit...');
-    // Reset session tracking for new visit
-    pageLoadTime = Date.now();
-    maxScrollPercent = calculateScrollPercent(); // Start from current scroll position
-    sendTrackingEvent('page_open');
+    console.log('[Analytics] 👁️ Page visible again, sending tab_visible event...');
+    // Don't reset the session - just continue tracking
+    // This way we can see the full journey
+    startHeartbeat();
+    sendTrackingEvent('tab_visible');
+  }
+}
+
+/**
+ * Handle window blur (additional fallback for tab switch detection)
+ * Some browsers fire this before visibilitychange
+ */
+function handleWindowBlur(): void {
+  console.log('[Analytics] 🔇 Window blur detected, sending tab_hidden as backup...');
+  stopHeartbeat();
+  // Don't send duplicate if visibility change just fired
+  if (document.visibilityState === 'hidden') {
+    return; // visibilitychange already handled this
+  }
+  sendTrackingEvent('tab_hidden');
+}
+
+/**
+ * Handle window focus (additional fallback)
+ */
+function handleWindowFocus(): void {
+  console.log('[Analytics] 🔊 Window focus detected...');
+  if (document.visibilityState === 'visible') {
+    startHeartbeat();
+  }
+}
+
+/**
+ * Handle pagehide event (iOS Safari specific - fires more reliably than beforeunload)
+ */
+function handlePageHide(): void {
+  if (hasPageExitFired) return;
+  hasPageExitFired = true;
+  stopHeartbeat();
+  console.log('[Analytics] 📱 pagehide event (iOS Safari), sending page_exit...');
+  sendTrackingEvent('page_exit');
+}
+
+/**
+ * Start heartbeat pings (every 30 seconds while page is visible)
+ */
+function startHeartbeat(): void {
+  if (heartbeatInterval) {
+    console.log('[Analytics] 💓 Heartbeat already running');
+    return;
+  }
+  console.log('[Analytics] 💓 Starting heartbeat (every 60s)');
+  heartbeatInterval = setInterval(() => {
+    if (document.visibilityState === 'visible') {
+      console.log('[Analytics] 💗 Sending heartbeat ping...');
+      sendTrackingEvent('heartbeat');
+    }
+  }, HEARTBEAT_INTERVAL);
+}
+
+/**
+ * Stop heartbeat pings
+ */
+function stopHeartbeat(): void {
+  if (heartbeatInterval) {
+    console.log('[Analytics] 💔 Stopping heartbeat');
+    clearInterval(heartbeatInterval);
+    heartbeatInterval = null;
   }
 }
 
@@ -261,17 +344,29 @@ export function initAnalytics(): void {
     }, 100); // Throttle to 100ms
   }, { passive: true });
 
-  // Set up page exit tracking
+  // Set up multiple exit detection methods for maximum reliability:
+  
+  // 1. beforeunload - fires when page is actually closing
   window.addEventListener('beforeunload', handlePageExit);
   
-  // Also track visibility change (handles mobile tab switching AND return)
+  // 2. pagehide - more reliable on iOS Safari
+  window.addEventListener('pagehide', handlePageHide);
+  
+  // 3. visibilitychange - fires when tab switches (most reliable for tab switches)
   document.addEventListener('visibilitychange', handleVisibilityChange);
+  
+  // 4. blur/focus - additional fallback for some browsers
+  window.addEventListener('blur', handleWindowBlur);
+  window.addEventListener('focus', handleWindowFocus);
 
   // Send page_open event
   sendTrackingEvent('page_open');
+  
+  // Start heartbeat pings (every 60 seconds while page is visible)
+  startHeartbeat();
 
   isInitialized = true;
-  console.log('[Analytics] ✅ Tracking initialized successfully!');
+  console.log('[Analytics] ✅ Tracking initialized with heartbeat + multi-event exit detection!');
 }
 
 /**
@@ -283,21 +378,30 @@ export function cleanupAnalytics(): void {
   
   console.log('[Analytics] 🧹 Cleaning up...');
   
-  window.removeEventListener('beforeunload', handlePageExit);
-  document.removeEventListener('visibilitychange', handleVisibilityChange);
+  // Stop heartbeat
+  stopHeartbeat();
   
-  // Send final exit event on cleanup
-  if (isInitialized) {
+  // Remove all event listeners
+  window.removeEventListener('beforeunload', handlePageExit);
+  window.removeEventListener('pagehide', handlePageHide);
+  document.removeEventListener('visibilitychange', handleVisibilityChange);
+  window.removeEventListener('blur', handleWindowBlur);
+  window.removeEventListener('focus', handleWindowFocus);
+  
+  // Send final exit event on cleanup (if not already sent)
+  if (isInitialized && !hasPageExitFired) {
     sendTrackingEvent('page_exit');
   }
   
+  // Reset state
   isInitialized = false;
+  hasPageExitFired = false;
 }
 
 /**
  * Manually trigger a tracking event (for testing)
  */
-export function debugSendEvent(eventType: 'page_open' | 'page_exit'): void {
+export function debugSendEvent(eventType: 'page_open' | 'page_exit' | 'heartbeat' | 'tab_hidden' | 'tab_visible'): void {
   console.log('[Analytics] 🔧 Debug: manually triggering event...');
   sendTrackingEvent(eventType);
 }
@@ -314,6 +418,9 @@ export function debugGetState(): object {
     trackingData,
     currentScrollPercent: calculateScrollPercent(),
     lead_magnet_slug: LEAD_MAGNET_SLUG,
+    hasPageExitFired,
+    heartbeatRunning: heartbeatInterval !== null,
+    visibilityState: typeof document !== 'undefined' ? document.visibilityState : 'unknown',
   };
 }
 
