@@ -4,12 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx @opennextjs/cloudflare build",
     "start": "next start",
     "lint": "eslint",
-    "pages:build": "npx opennextjs-cloudflare build",
-    "pages:dev": "npx opennextjs-cloudflare dev",
-    "pages:deploy": "npx opennextjs-cloudflare deploy"
+    "preview": "npx @opennextjs/cloudflare dev",
+    "deploy": "npx @opennextjs/cloudflare deploy"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "^2.0.0",
