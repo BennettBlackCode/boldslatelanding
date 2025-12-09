@@ -32,12 +32,33 @@ const testimonialsData = [
     role: "VIS Mountain",
     link: "https://vismountain.com/",
   },
+  {
+    text: "Working with Bold Slate has been awesome. I've been able to cut my development time from 4 weeks to 4 days and create sites that outperform my competitors 10-15 page basic sites with completely SEO optimized sites that are 50+ pages.",
+    image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Jeremy%20Friedland/Jeremy%20Friedland%20Profile%20Pic%20-%20AutomatePro.jpg",
+    name: "Jeremy Friedland",
+    role: "CEO, AutomatePro.ai",
+    link: "https://automatepro.ai/",
+  },
+  {
+    text: "Boldslate's one-click website tool changed the pace of our contractor site builds. What used to drag on for a month or more now wraps up in about two weeks. The process is smoother, the workload is lighter, and our team moves faster than we ever thought possible.",
+    image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Nicklaus%20Conley/Nicklaus%20Conley%20Profile%20Pic%20Tekton%20Growth.jpg",
+    name: "Nicklaus Conley",
+    role: "CEO, Tekton Growth",
+    link: "https://tektongrowth.com/home",
+  },
+  {
+    text: "Last month I sold 8 out of the 10 sites, saved my VA about 100 hrs of work and made an extra $3000k ROI is nuts. I'm keeping an eye on all your stuff, this is great.",
+    image: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Balint%20Adorjan/Balint%20Adorjan%20Profile%20Pic%20Vortex%20Local.jpg",
+    name: "Balint Adorjan",
+    role: "Founder, Vortex Local",
+    link: "https://vortexlocal.com/",
+  },
 ];
 
 // Distribute testimonials across columns for varied display
-const firstColumn = [testimonialsData[0], testimonialsData[1], testimonialsData[2]];
-const secondColumn = [testimonialsData[3], testimonialsData[0], testimonialsData[2]];
-const thirdColumn = [testimonialsData[1], testimonialsData[3], testimonialsData[0]];
+const firstColumn = [testimonialsData[0], testimonialsData[3], testimonialsData[4], testimonialsData[1]];
+const secondColumn = [testimonialsData[1], testimonialsData[5], testimonialsData[2], testimonialsData[6]];
+const thirdColumn = [testimonialsData[2], testimonialsData[6], testimonialsData[0], testimonialsData[5]];
 
 const Testimonials = () => {
   return (
