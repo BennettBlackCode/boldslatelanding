@@ -19,6 +19,10 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Bold Slate | AI Consulting for Small Businesses",
   description: "We build AI powered systems for small to medium sized marketing agencies that automate service delivery to help you scale.",
+  icons: {
+    icon: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Bold%20Slate%20Logo%20(3).png",
+    apple: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Bold%20Slate%20Logo%20(3).png",
+  },
 };
 
 export default function RootLayout({
