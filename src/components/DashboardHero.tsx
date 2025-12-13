@@ -203,7 +203,7 @@ function InteractiveDashboard() {
                 className="space-y-3"
               >
                 {[
-                  { action: 'New client onboarded', detail: 'Martinez Plumbing Co added to system', time: '2 min ago', icon: Users },
+                  { action: 'New client onboarded', detail: 'Hometown Plumbing added to system', time: '2 min ago', icon: Users },
                   { action: 'Weekly report sent', detail: 'Sent to 12 clients automatically', time: '15 min ago', icon: FileText },
                   { action: 'Website built & deployed', detail: 'Johnson Plumbing - 47 pages', time: '28 min ago', icon: Globe },
                   { action: 'Local SEO task completed', detail: 'Updated 23 citations for client', time: '45 min ago', icon: MapPin },
