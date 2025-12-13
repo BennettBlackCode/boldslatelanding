@@ -265,7 +265,6 @@ export default function DashboardHero() {
                       "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Jeremy%20Friedland/Jeremy%20Friedland%20Profile%20Pic%20-%20AutomatePro.jpg",
                       "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Nicklaus%20Conley/Nicklaus%20Conley%20Profile%20Pic%20Tekton%20Growth.jpg",
                     ]}
-                    numPeople={30}
                   />
                   <div className="text-left">
                     <div className="flex items-center gap-1 text-[#010100]">
