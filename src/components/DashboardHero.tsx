@@ -65,13 +65,9 @@ function InteractiveDashboard() {
           <span className="px-3 py-1 bg-white rounded-md border border-[#010100]/10">app.youragencyurl.com</span>
         </div>
         <div className="flex items-center gap-2">
-          <Image 
-            src="https://i.pravatar.cc/32?img=12" 
-            alt="User" 
-            width={32} 
-            height={32} 
-            className="rounded-full"
-          />
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#010100] to-[#545555] flex items-center justify-center">
+            <span className="text-white text-xs font-bold">YA</span>
+          </div>
         </div>
       </div>
 
