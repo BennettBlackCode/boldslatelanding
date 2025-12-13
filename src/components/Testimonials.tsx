@@ -55,10 +55,10 @@ const testimonialsData = [
   },
 ];
 
-// Distribute testimonials across columns for varied display
-const firstColumn = [testimonialsData[0], testimonialsData[3], testimonialsData[4], testimonialsData[1]];
-const secondColumn = [testimonialsData[1], testimonialsData[5], testimonialsData[2], testimonialsData[6]];
-const thirdColumn = [testimonialsData[2], testimonialsData[6], testimonialsData[0], testimonialsData[5]];
+// Distribute testimonials across columns (no duplicates)
+const firstColumn = [testimonialsData[0], testimonialsData[3], testimonialsData[6]]; // Lane, Abe, Balint
+const secondColumn = [testimonialsData[1], testimonialsData[4]]; // Vincent, Jeremy
+const thirdColumn = [testimonialsData[2], testimonialsData[5]]; // Frankie, Nicklaus
 
 const Testimonials = () => {
   return (
