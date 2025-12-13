@@ -30,7 +30,7 @@ export default function Hero() {
 
           {/* Subheading */}
           <p className="text-[20px] md:text-[24px] leading-[1.6] text-[#545555] max-w-2xl mx-auto mb-10 font-light">
-            We build AI powered systems for small to medium sized marketing agencies that automate service delivery to help you scale.
+            We build AI powered systems for small to medium sized marketing agencies that automate key processes to help you scale.
           </p>
           
           {/* Single CTA Button */}
