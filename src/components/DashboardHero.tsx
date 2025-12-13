@@ -130,18 +130,14 @@ function InteractiveDashboard() {
 
         {/* Content Area */}
         <div className="grid grid-cols-3 gap-4">
-          {/* Workflows List */}
+          {/* Main Content - Changes based on active tab */}
           <div className="col-span-2 space-y-3">
-            {workflows.map((workflow, index) => (
+            {activeTab === 'workflows' && workflows.map((workflow, index) => (
               <motion.div
                 key={workflow.name}
                 initial={{ opacity: 0, x: -10 }}
-                animate={{ 
-                  opacity: 1, 
-                  x: 0,
-                  height: selectedWorkflow === workflow.name ? 'auto' : 'auto'
-                }}
-                transition={{ delay: 0.8 + index * 0.1 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
                 onClick={() => setSelectedWorkflow(selectedWorkflow === workflow.name ? null : workflow.name)}
                 whileTap={{ scale: 0.995 }}
                 className={`p-4 bg-[#FAF8F7] rounded-xl hover:bg-[#010100]/5 transition-all cursor-pointer group ${
@@ -178,17 +174,14 @@ function InteractiveDashboard() {
                 </div>
                 
                 {/* Expanded Content */}
-                <motion.div
-                  initial={false}
-                  animate={{ 
-                    height: selectedWorkflow === workflow.name ? 'auto' : 0,
-                    opacity: selectedWorkflow === workflow.name ? 1 : 0,
-                    marginTop: selectedWorkflow === workflow.name ? 12 : 0
-                  }}
-                  transition={{ duration: 0.2 }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-3 border-t border-[#010100]/10">
+                {selectedWorkflow === workflow.name && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="mt-3 pt-3 border-t border-[#010100]/10"
+                  >
                     <p className="text-sm text-[#545555] leading-relaxed">{workflow.description}</p>
                     <div className="flex gap-2 mt-3">
                       <button className="px-3 py-1.5 text-xs font-medium bg-[#010100] text-white rounded-lg hover:bg-[#010100]/80 transition-colors">
@@ -198,13 +191,87 @@ function InteractiveDashboard() {
                         Run Now
                       </button>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                )}
               </motion.div>
             ))}
+
+            {activeTab === 'activity' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="space-y-3"
+              >
+                {[
+                  { action: 'New client onboarded', detail: 'Quantum Agency added to system', time: '2 min ago', icon: Users },
+                  { action: 'Weekly report sent', detail: 'Sent to 12 clients automatically', time: '15 min ago', icon: FileText },
+                  { action: 'Website built & deployed', detail: 'Johnson Plumbing - 47 pages', time: '28 min ago', icon: Globe },
+                  { action: 'Local SEO task completed', detail: 'Updated 23 citations for client', time: '45 min ago', icon: MapPin },
+                  { action: 'Report generated', detail: 'Monthly performance summary', time: '1 hour ago', icon: BarChart3 },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    whileHover={{ scale: 1.01 }}
+                    className="flex items-center gap-4 p-4 bg-[#FAF8F7] rounded-xl cursor-pointer hover:shadow-md transition-all"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-[#010100]/10">
+                      <item.icon className="w-5 h-5 text-[#010100]" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-medium text-[#010100]">{item.action}</div>
+                      <div className="text-xs text-[#545555]">{item.detail}</div>
+                    </div>
+                    <div className="text-xs text-[#545555]">{item.time}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+
+            {activeTab === 'reports' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="space-y-3"
+              >
+                {[
+                  { name: 'Weekly Performance Report', status: 'Sent', date: 'Dec 12, 2024', recipients: 12 },
+                  { name: 'Monthly Analytics Summary', status: 'Scheduled', date: 'Dec 15, 2024', recipients: 8 },
+                  { name: 'Client ROI Report', status: 'Draft', date: 'Dec 18, 2024', recipients: 5 },
+                ].map((report, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    whileHover={{ scale: 1.01 }}
+                    className="flex items-center justify-between p-4 bg-[#FAF8F7] rounded-xl cursor-pointer hover:shadow-md transition-all"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-[#010100]/10">
+                        <FileText className="w-5 h-5 text-[#010100]" />
+                      </div>
+                      <div>
+                        <div className="font-medium text-[#010100]">{report.name}</div>
+                        <div className="text-xs text-[#545555]">{report.recipients} recipients • {report.date}</div>
+                      </div>
+                    </div>
+                    <span className={`px-2 py-1 rounded-full text-xs ${
+                      report.status === 'Sent' ? 'bg-emerald-100 text-emerald-700' :
+                      report.status === 'Scheduled' ? 'bg-blue-100 text-blue-700' :
+                      'bg-amber-100 text-amber-700'
+                    }`}>
+                      {report.status}
+                    </span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
           </div>
 
-          {/* Activity Feed */}
+          {/* Activity Feed Sidebar */}
           <div className="space-y-3">
             <div className="text-sm font-medium text-[#010100] mb-2">Recent Activity</div>
             {recentActivity.map((activity, index) => (
@@ -212,7 +279,7 @@ function InteractiveDashboard() {
                 key={index}
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 + index * 0.1 }}
+                transition={{ delay: 0.2 + index * 0.05 }}
                 whileHover={{ scale: 1.02, x: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-start gap-3 p-3 bg-[#FAF8F7] rounded-xl cursor-pointer hover:shadow-md transition-shadow"
@@ -229,6 +296,7 @@ function InteractiveDashboard() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => setActiveTab('activity')}
               className="w-full py-2 text-xs font-medium text-[#545555] hover:text-[#010100] bg-white border border-[#010100]/10 rounded-lg hover:border-[#010100]/20 transition-all"
             >
               View All Activity →
