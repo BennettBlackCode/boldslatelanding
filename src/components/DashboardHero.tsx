@@ -262,8 +262,8 @@ export default function DashboardHero() {
                       "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/lane%20image.png",
                       "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/vince%20image.png",
                       "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/frankie%20image.png",
-                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Ibrahim%20Barhumi.png",
                       "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Jeremy%20Friedland/Jeremy%20Friedland%20Profile%20Pic%20-%20AutomatePro.jpg",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Nicklaus%20Conley/Nicklaus%20Conley%20Profile%20Pic%20Tekton%20Growth.jpg",
                     ]}
                     numPeople={99}
                   />
@@ -271,7 +271,7 @@ export default function DashboardHero() {
                     <div className="flex items-center gap-1 text-[#010100]">
                       <span className="text-lg">★★★★★</span>
                     </div>
-                    <p className="text-sm font-medium text-[#545555]">30+ Agencies Served</p>
+                    <p className="text-sm font-medium text-[#545555]">Trusted by Agency Owners</p>
                   </div>
                 </div>
               </div>
