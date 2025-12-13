@@ -70,12 +70,16 @@ function InteractiveDashboard() {
           <div className="w-3 h-3 rounded-full bg-emerald-400" />
         </div>
         <div className="flex items-center gap-2 text-sm text-[#545555]">
-          <span className="px-3 py-1 bg-white rounded-md border border-[#010100]/10">agency-dashboard.boldslate.ai</span>
+          <span className="px-3 py-1 bg-white rounded-md border border-[#010100]/10">app.youragencyurl.com</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-[#010100] flex items-center justify-center">
-            <span className="text-white text-xs font-medium">BS</span>
-          </div>
+          <Image 
+            src="https://i.pravatar.cc/32?img=12" 
+            alt="User" 
+            width={32} 
+            height={32} 
+            className="rounded-full"
+          />
         </div>
       </div>
 
