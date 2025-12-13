@@ -270,7 +270,7 @@ export default function DashboardHero() {
                     <div className="flex items-center gap-1 text-[#010100]">
                       <span className="text-lg">★★★★★</span>
                     </div>
-                    <p className="text-sm font-medium text-[#545555]">Trusted by Agency Owners</p>
+                    <p className="text-sm font-medium text-[#545555]">Trusted by Innovators</p>
                   </div>
                 </div>
               </div>
