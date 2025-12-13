@@ -306,6 +306,7 @@ export default function DashboardHero() {
                   </Link>
                 </Button>
               </div>
+              {/* See Results button - commented out for now
               <Button
                 asChild
                 size="lg"
@@ -320,6 +321,7 @@ export default function DashboardHero() {
                   <span className="text-nowrap">See The Results</span>
                 </Link>
               </Button>
+              */}
             </AnimatedGroup>
           </div>
         </div>
