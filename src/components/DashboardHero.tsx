@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Play, CheckCircle2, Zap, Clock, Users, BarChart3, MessageSquare, Mail, Calendar } from 'lucide-react';
+import { ArrowRight, Play, CheckCircle2, Zap, Clock, Users, BarChart3, Globe, MapPin, FileText, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedGroup } from '@/components/ui/animated-group';
 import { motion } from 'motion/react';
@@ -33,26 +33,32 @@ const transitionVariants = {
 function InteractiveDashboard() {
   const [activeTab, setActiveTab] = useState('workflows');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [selectedWorkflow, setSelectedWorkflow] = useState<string | null>(null);
+  const [clickedStat, setClickedStat] = useState<string | null>(null);
 
   const stats = [
-    { label: 'Hours Saved', value: '2,847', icon: Clock, color: 'text-emerald-600' },
-    { label: 'Active Workflows', value: '24', icon: Zap, color: 'text-amber-600' },
-    { label: 'Team Members', value: '12', icon: Users, color: 'text-blue-600' },
-    { label: 'Tasks Automated', value: '1.2k', icon: BarChart3, color: 'text-purple-600' },
+    { label: 'Hours Saved', value: '2,847', icon: Clock, color: 'text-emerald-600', trend: '+18%' },
+    { label: 'Active Systems', value: '4', icon: Zap, color: 'text-amber-600', trend: '+2' },
+    { label: 'Clients Served', value: '36', icon: Users, color: 'text-blue-600', trend: '+8' },
+    { label: 'Tasks Automated', value: '1.4k', icon: BarChart3, color: 'text-purple-600', trend: '+156' },
   ];
 
   const workflows = [
-    { name: 'Client Onboarding', status: 'active', runs: '847', icon: Users },
-    { name: 'Report Generation', status: 'active', runs: '1.2k', icon: BarChart3 },
-    { name: 'Lead Follow-up', status: 'active', runs: '534', icon: MessageSquare },
-    { name: 'Email Sequences', status: 'paused', runs: '266', icon: Mail },
+    { name: 'Onboarding System', status: 'active', metric: '36 clients added this month', icon: Users, description: 'Automatically onboards new clients with welcome sequences, account setup, and team introductions.' },
+    { name: 'Reporting System', status: 'active', metric: '936 emails sent this month', icon: FileText, description: 'Generates and sends automated performance reports to clients on a scheduled basis.' },
+    { name: 'Website Generation', status: 'active', metric: '44 sites built this month', icon: Globe, description: 'AI-powered website builder that creates custom sites for clients in minutes.' },
+    { name: 'Local SEO System', status: 'active', metric: '447 tasks completed this month', icon: MapPin, description: 'Manages citations, reviews, and local listings across all platforms automatically.' },
   ];
 
   const recentActivity = [
     { action: 'New client onboarded', time: '2 min ago', type: 'success' },
     { action: 'Weekly report sent', time: '15 min ago', type: 'success' },
-    { action: 'Lead scored & assigned', time: '32 min ago', type: 'success' },
+    { action: 'Website built & deployed', time: '28 min ago', type: 'success' },
   ];
+
+  const handleStatClick = (label: string) => {
+    setClickedStat(clickedStat === label ? null : label);
+  };
 
   return (
     <div className="bg-white rounded-2xl border border-[#010100]/10 shadow-2xl shadow-[#010100]/10 overflow-hidden">
@@ -83,15 +89,17 @@ function InteractiveDashboard() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + index * 0.1 }}
+              onClick={() => handleStatClick(stat.label)}
               onMouseEnter={() => setHoveredCard(stat.label)}
               onMouseLeave={() => setHoveredCard(null)}
+              whileTap={{ scale: 0.98 }}
               className={`bg-[#FAF8F7] rounded-xl p-4 cursor-pointer transition-all duration-300 ${
                 hoveredCard === stat.label ? 'scale-105 shadow-lg' : ''
-              }`}
+              } ${clickedStat === stat.label ? 'ring-2 ring-[#010100] shadow-lg' : ''}`}
             >
               <div className="flex items-center justify-between mb-2">
                 <stat.icon className={`w-5 h-5 ${stat.color}`} />
-                <span className="text-xs text-[#545555]">+12%</span>
+                <span className="text-xs text-emerald-600 font-medium">{stat.trend}</span>
               </div>
               <div className="text-2xl font-semibold text-[#010100]">{stat.value}</div>
               <div className="text-xs text-[#545555]">{stat.label}</div>
@@ -124,29 +132,70 @@ function InteractiveDashboard() {
               <motion.div
                 key={workflow.name}
                 initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
+                animate={{ 
+                  opacity: 1, 
+                  x: 0,
+                  height: selectedWorkflow === workflow.name ? 'auto' : 'auto'
+                }}
                 transition={{ delay: 0.8 + index * 0.1 }}
-                className="flex items-center justify-between p-4 bg-[#FAF8F7] rounded-xl hover:bg-[#010100]/5 transition-all cursor-pointer group"
+                onClick={() => setSelectedWorkflow(selectedWorkflow === workflow.name ? null : workflow.name)}
+                whileTap={{ scale: 0.995 }}
+                className={`p-4 bg-[#FAF8F7] rounded-xl hover:bg-[#010100]/5 transition-all cursor-pointer group ${
+                  selectedWorkflow === workflow.name ? 'ring-2 ring-[#010100] bg-white shadow-lg' : ''
+                }`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center border border-[#010100]/10 group-hover:border-[#010100]/20 transition-all">
-                    <workflow.icon className="w-5 h-5 text-[#010100]" />
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center border transition-all ${
+                      selectedWorkflow === workflow.name 
+                        ? 'bg-[#010100] border-[#010100]' 
+                        : 'bg-white border-[#010100]/10 group-hover:border-[#010100]/20'
+                    }`}>
+                      <workflow.icon className={`w-5 h-5 ${selectedWorkflow === workflow.name ? 'text-white' : 'text-[#010100]'}`} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-[#010100]">{workflow.name}</div>
+                      <div className="text-xs text-[#545555]">{workflow.metric}</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="font-medium text-[#010100]">{workflow.name}</div>
-                    <div className="text-xs text-[#545555]">{workflow.runs} runs this month</div>
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-1 rounded-full text-xs bg-emerald-100 text-emerald-700">
+                      {workflow.status}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: selectedWorkflow === workflow.name ? 90 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <ArrowRight className={`w-4 h-4 transition-opacity ${
+                        selectedWorkflow === workflow.name ? 'opacity-100 text-[#010100]' : 'opacity-0 group-hover:opacity-100 text-[#545555]'
+                      }`} />
+                    </motion.div>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className={`px-2 py-1 rounded-full text-xs ${
-                    workflow.status === 'active' 
-                      ? 'bg-emerald-100 text-emerald-700' 
-                      : 'bg-amber-100 text-amber-700'
-                  }`}>
-                    {workflow.status}
-                  </span>
-                  <ArrowRight className="w-4 h-4 text-[#545555] opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
+                
+                {/* Expanded Content */}
+                <motion.div
+                  initial={false}
+                  animate={{ 
+                    height: selectedWorkflow === workflow.name ? 'auto' : 0,
+                    opacity: selectedWorkflow === workflow.name ? 1 : 0,
+                    marginTop: selectedWorkflow === workflow.name ? 12 : 0
+                  }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="pt-3 border-t border-[#010100]/10">
+                    <p className="text-sm text-[#545555] leading-relaxed">{workflow.description}</p>
+                    <div className="flex gap-2 mt-3">
+                      <button className="px-3 py-1.5 text-xs font-medium bg-[#010100] text-white rounded-lg hover:bg-[#010100]/80 transition-colors">
+                        View Details
+                      </button>
+                      <button className="px-3 py-1.5 text-xs font-medium bg-white text-[#010100] border border-[#010100]/20 rounded-lg hover:bg-[#FAF8F7] transition-colors">
+                        Run Now
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -160,7 +209,9 @@ function InteractiveDashboard() {
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1 + index * 0.1 }}
-                className="flex items-start gap-3 p-3 bg-[#FAF8F7] rounded-xl"
+                whileHover={{ scale: 1.02, x: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-start gap-3 p-3 bg-[#FAF8F7] rounded-xl cursor-pointer hover:shadow-md transition-shadow"
               >
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
                 <div>
@@ -169,6 +220,15 @@ function InteractiveDashboard() {
                 </div>
               </motion.div>
             ))}
+            
+            {/* View All Button */}
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-2 text-xs font-medium text-[#545555] hover:text-[#010100] bg-white border border-[#010100]/10 rounded-lg hover:border-[#010100]/20 transition-all"
+            >
+              View All Activity →
+            </motion.button>
           </div>
         </div>
       </div>
