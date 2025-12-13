@@ -1,4 +1,4 @@
-import Hero from '@/components/Hero';
+import DashboardHero from '@/components/DashboardHero';
 import Software from '@/components/Software';
 import CustomBuilds from '@/components/CustomBuilds';
 import Testimonials from '@/components/Testimonials';
@@ -48,7 +48,7 @@ import CallToAction from '@/components/CallToAction';
 export default function Home() {
   return (
     <div className="space-y-0">
-      <Hero />
+      <DashboardHero />
       <Software />
       <CustomBuilds />
       <Testimonials />
