@@ -412,7 +412,7 @@ export default function DashboardHero() {
           <div className="relative mt-16 overflow-hidden px-4 sm:px-6 md:mt-20">
             <div
               aria-hidden
-              className="bg-gradient-to-b to-white absolute inset-0 z-10 from-transparent from-50%"
+              className="bg-gradient-to-b to-white absolute inset-0 z-10 from-transparent from-50% pointer-events-none"
             />
             <div className="relative mx-auto max-w-6xl">
               <InteractiveDashboard />
