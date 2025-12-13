@@ -284,7 +284,7 @@ export default function DashboardHero() {
 
               {/* Subheading */}
               <p className="mx-auto mt-8 max-w-2xl text-[20px] md:text-[24px] leading-[1.6] text-[#545555] font-light">
-                We build AI powered systems for small to medium sized marketing agencies that automate key processes to help you scale.
+                Your agency already has great systems. We just make them run themselves. The same way you already do it, at any scale, without adding headcount.
               </p>
             </AnimatedGroup>
 
