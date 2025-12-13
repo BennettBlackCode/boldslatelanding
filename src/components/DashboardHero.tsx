@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ArrowRight, Play, CheckCircle2, Zap, Clock, Users, BarChart3, Globe, MapPin, FileText, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedGroup } from '@/components/ui/animated-group';
+import { AvatarCircles } from '@/components/ui/avatar-circles';
 import { motion } from 'motion/react';
 import { trackEvent } from './FacebookPixel';
 
@@ -254,14 +255,25 @@ export default function DashboardHero() {
           <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
             <AnimatedGroup variants={transitionVariants}>
               {/* Social Proof Badge */}
-              <div className="mb-8 flex justify-center">
-                <Image
-                  src="https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/above%20header%20image.webp"
-                  alt="1,000+ Systems Built"
-                  width={400}
-                  height={80}
-                  className="object-contain"
-                />
+              <div className="mb-8 flex flex-col items-center justify-center gap-3">
+                <div className="flex items-center gap-4">
+                  <AvatarCircles
+                    avatarUrls={[
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/lane%20image.png",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/vince%20image.png",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/frankie%20image.png",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Ibrahim%20Barhumi.png",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Jeremy%20Friedland/Jeremy%20Friedland%20Profile%20Pic%20-%20AutomatePro.jpg",
+                    ]}
+                    numPeople={99}
+                  />
+                  <div className="text-left">
+                    <div className="flex items-center gap-1 text-[#010100]">
+                      <span className="text-lg">★★★★★</span>
+                    </div>
+                    <p className="text-sm font-medium text-[#545555]">100+ Agencies Scaled</p>
+                  </div>
+                </div>
               </div>
 
               {/* Main Heading */}
