@@ -66,7 +66,7 @@ function InteractiveDashboard() {
         </div>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#010100] to-[#545555] flex items-center justify-center">
-            <span className="text-white text-xs font-bold">YA</span>
+            <span className="text-white text-xs font-bold">AA</span>
           </div>
         </div>
       </div>
