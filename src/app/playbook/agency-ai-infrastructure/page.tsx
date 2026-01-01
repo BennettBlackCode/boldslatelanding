@@ -121,10 +121,10 @@ function Divider() {
 
 const SECTIONS = [
   { id: 'context', label: 'Context' },
-  { id: 'system-1', label: 'System #1: From 5 Hours to 15 Minutes: Client Reporting' },
-  { id: 'system-2', label: 'System #2: Zero-Touch Client Onboarding' },
+  { id: 'system-1', label: 'System #1: Zero-Touch Client Onboarding' },
+  { id: 'system-2', label: 'System #2: 5 Minute SEO Websites' },
   { id: 'system-3', label: 'System #3: 30 Days of SEO Work - Delivered Day One' },
-  { id: 'system-4', label: 'System #4: 5 Minute SEO Websites' },
+  { id: 'system-4', label: 'System #4: From 5 Hours to 15 Minutes: Client Reporting' },
   { id: 'system-5', label: 'System #5: Custom AI Infrastructure For Agencies' },
   { id: 'scale', label: 'What This Means At Scale' },
   { id: 'implementation', label: 'Implementation Options' },
@@ -266,84 +266,11 @@ export default function AgencyAIInfrastructurePlaybook() {
           <Divider />
 
           {/* ============================================ */}
-          {/* SYSTEM #1: Client Reporting Automation */}
+          {/* SYSTEM #1: Zero-Touch Client Onboarding */}
           {/* ============================================ */}
           <section id="system-1" className="scroll-mt-24">
             <span className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200 text-gray-700 mb-4 shadow-sm">
               System #1
-            </span>
-            
-            <h2 className="text-2xl font-semibold text-[#010100] mb-4">
-              From 5 Hours to 15 Minutes: Client Reporting
-            </h2>
-
-            <ProblemCallout>
-              <p>Reporting eats 3-5 hours per client per month. Most of that time is logging into platforms, pulling data, and writing the same summary email you wrote last month.</p>
-              <p className="mt-3">At 20 clients, that&apos;s a full-time role spent on copy-paste work.</p>
-            </ProblemCallout>
-
-            <h3 className="text-lg font-semibold text-[#010100] mb-3">What We Built</h3>
-            <p className="text-sm text-[#545555] leading-relaxed mb-4">
-              A system that pulls client data from all sources automatically, stores it in a unified database, analyzes week-over-week changes, and pre-writes personalized email reports. Your team reviews, edits if needed, and clicks send.
-            </p>
-            <p className="text-sm font-medium text-[#010100] mb-6">
-              Time reduction: 4+ hours per client → 15 minutes of review
-            </p>
-
-            <h3 className="text-lg font-semibold text-[#010100] mb-3">Technical Overview</h3>
-            <SimpleTable 
-              headers={['Phase', 'What Happens']}
-              rows={[
-                ['Input', 'Scheduled workflow pulls data from GA4, Search Console, SEMrush/SE Ranking, local rank trackers, and project management tool'],
-                ['Processing', 'AI analyzes week-over-week changes, identifies wins worth highlighting, surfaces key insights, and writes personalized summary in your voice'],
-                ['Output', 'Email draft created in Gmail, queued for review. Historical data stored for trend analysis. One-click approve or edit before sending.'],
-              ]}
-            />
-
-            <h3 className="text-lg font-semibold text-[#010100] mb-3">Tools Used</h3>
-            <SimpleTable 
-              headers={['Tool', 'Purpose']}
-              rows={[
-                ['n8n', 'Scheduled data pulls and workflow orchestration'],
-                ['Supabase', 'Unified client data storage'],
-                ['Google Analytics API', 'Traffic, conversions, behavior data'],
-                ['Search Console API', 'Keyword rankings and impressions'],
-                ['SEMrush or SE Ranking API', 'Competitive rankings and backlink data'],
-                ['Claude API', 'Report writing and analysis'],
-                ['Gmail API', 'Draft creation and sending'],
-              ]}
-            />
-
-            <h3 className="text-lg font-semibold text-[#010100] mb-3 mt-6">The Approach</h3>
-            <p className="text-sm text-[#545555] leading-relaxed mb-4">If you want to build something similar, here&apos;s the general approach:</p>
-            <ol className="text-sm text-[#545555] space-y-3 mb-6 list-decimal list-inside">
-              <li><strong>Map your data sources.</strong> List every platform you currently pull reporting data from. For most SEO agencies: Google Analytics, Search Console, rank tracker, project management tool.</li>
-              <li><strong>Create a unified client database.</strong> Each client gets a record. Each record stores their API connections and historical data.</li>
-              <li><strong>Build the data pull workflow.</strong> A scheduled workflow runs weekly, connects to each data source via API, pulls relevant metrics, writes them to your database.</li>
-              <li><strong>Create the AI analysis layer.</strong> Feed the pulled data into Claude with a prompt that compares this week to last week, identifies wins, flags concerns, and writes a summary.</li>
-              <li><strong>Set up email drafts.</strong> Have the workflow create a Gmail draft - not send automatically. Keeps humans in the loop for review.</li>
-              <li><strong>Add error handling.</strong> APIs fail. Accounts disconnect. Build in notifications when pulls fail so nothing slips through.</li>
-            </ol>
-            <p className="text-sm text-[#545555] mb-6">The first build takes 15-20 hours. After that, it runs on its own.</p>
-
-            <h3 className="text-lg font-semibold text-[#010100] mb-3">Real-World Impact</h3>
-            <ul className="text-sm text-[#545555] space-y-1">
-              <li>• <strong>50+ hours saved per month</strong> across a 20-client roster</li>
-              <li>• <strong>Client retention increased by 3+ months average</strong> - consistent communication builds trust</li>
-              <li>• <strong>CSMs handle 3x more clients</strong> without burning out on report writing</li>
-            </ul>
-
-            <SectionNav currentSection="system-1" />
-          </section>
-
-          <Divider />
-
-          {/* ============================================ */}
-          {/* SYSTEM #2: Client Onboarding & Operations */}
-          {/* ============================================ */}
-          <section id="system-2" className="scroll-mt-24">
-            <span className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200 text-gray-700 mb-4 shadow-sm">
-              System #2
             </span>
             
             <h2 className="text-2xl font-semibold text-[#010100] mb-4">
@@ -407,6 +334,78 @@ export default function AgencyAIInfrastructurePlaybook() {
               <li>• <strong>Time to first deliverable reduced from 5-7 days to 1-2 days</strong></li>
               <li>• <strong>Zero steps forgotten</strong> - the system doesn&apos;t forget</li>
               <li>• <strong>Clients start receiving value faster</strong> - better first impression</li>
+            </ul>
+
+            <SectionNav currentSection="system-1" />
+          </section>
+
+          <Divider />
+
+          {/* ============================================ */}
+          {/* SYSTEM #2: 5 Minute SEO Websites */}
+          {/* ============================================ */}
+          <section id="system-2" className="scroll-mt-24">
+            <span className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200 text-gray-700 mb-4 shadow-sm">
+              System #2
+            </span>
+            
+            <h2 className="text-2xl font-semibold text-[#010100] mb-4">
+              5 Minute SEO Websites
+            </h2>
+
+            <ProblemCallout>
+              <p>Even with templates, WordPress sites take 30-50 hours to build. Service pages, location pages, homepage, content population, SEO configuration.</p>
+              <p className="mt-3">Clients wait 4-6 weeks. Every week of delay is lost rankings and lost trust.</p>
+            </ProblemCallout>
+
+            <h3 className="text-lg font-semibold text-[#010100] mb-3">What We Built</h3>
+            <p className="text-sm text-[#545555] leading-relaxed mb-4">
+              A system that takes a client intake form, applies your existing templates, generates SEO-optimized content for every page, and provisions a fully-built WordPress site. Post-launch changes happen through a conversational AI agent - no backend access needed.
+            </p>
+            <p className="text-sm font-medium text-[#010100] mb-6">
+              Time reduction: 40+ hours → under 5 minutes
+            </p>
+
+            <h3 className="text-lg font-semibold text-[#010100] mb-3">Technical Overview</h3>
+            <SimpleTable 
+              headers={['Phase', 'What Happens']}
+              rows={[
+                ['Input', 'Client completes intake form: branding assets, service list, target locations, business info'],
+                ['Processing', 'AI generates SEO-optimized content for each page, applies brand voice, populates Elementor templates'],
+                ['Output', 'WordPress site provisioned on hosting, all pages built and populated, SSL configured, site live'],
+              ]}
+            />
+
+            <h3 className="text-lg font-semibold text-[#010100] mb-3">Tools Used</h3>
+            <SimpleTable 
+              headers={['Tool', 'Purpose']}
+              rows={[
+                ['n8n', 'Workflow orchestration and API coordination'],
+                ['WordPress', 'Content management system'],
+                ['Elementor', 'Template-based page generation'],
+                ['Claude API', 'Content generation with brand voice'],
+                ['Cloudways or Kinsta', 'Managed WordPress hosting with API'],
+                ['Custom GPT', 'Conversational agent for post-launch changes'],
+              ]}
+            />
+
+            <h3 className="text-lg font-semibold text-[#010100] mb-3 mt-6">The Approach</h3>
+            <ol className="text-sm text-[#545555] space-y-3 mb-6 list-decimal list-inside">
+              <li><strong>Create your mega-template.</strong> Build one WordPress site with every page type you commonly use: homepage, about, contact, service pages, location pages. Use Elementor global widgets for elements that repeat.</li>
+              <li><strong>Map your custom fields.</strong> Identify what changes per client: logo, colors, business name, service descriptions, location details. These become form fields.</li>
+              <li><strong>Build the intake form.</strong> Collect everything needed to populate the template. Structure it so AI can parse the responses.</li>
+              <li><strong>Connect content generation.</strong> Claude takes intake responses and generates page content following your templates and brand guidelines.</li>
+              <li><strong>Automate the provisioning.</strong> Cloudways API clones your template site. WordPress REST API populates pages with generated content. DNS configuration completes the deployment.</li>
+              <li><strong>Add the change agent.</strong> A Custom GPT connected to the WordPress API allows post-launch edits through conversation rather than backend access.</li>
+            </ol>
+            <p className="text-sm text-[#545555] mb-6">Build time: 60-80 hours for a production-ready system. Saves 35+ hours per site after that.</p>
+
+            <h3 className="text-lg font-semibold text-[#010100] mb-3">Real-World Impact</h3>
+            <ul className="text-sm text-[#545555] space-y-1">
+              <li>• <strong>Sites delivered same-day instead of 4-6 weeks</strong></li>
+              <li>• <strong>$3,000+/month saved on fulfillment payroll</strong></li>
+              <li>• <strong>Zero change request bottlenecks</strong> - clients can request updates through AI agent</li>
+              <li>• <strong>Capacity to onboard 6+ additional clients per month</strong> without hiring</li>
             </ul>
 
             <SectionNav currentSection="system-2" />
@@ -486,7 +485,7 @@ export default function AgencyAIInfrastructurePlaybook() {
           <Divider />
 
           {/* ============================================ */}
-          {/* SYSTEM #4: 5-Minute SEO Website Builder */}
+          {/* SYSTEM #4: Client Reporting Automation */}
           {/* ============================================ */}
           <section id="system-4" className="scroll-mt-24">
             <span className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200 text-gray-700 mb-4 shadow-sm">
@@ -494,29 +493,29 @@ export default function AgencyAIInfrastructurePlaybook() {
             </span>
             
             <h2 className="text-2xl font-semibold text-[#010100] mb-4">
-              5 Minute SEO Websites
+              From 5 Hours to 15 Minutes: Client Reporting
             </h2>
 
             <ProblemCallout>
-              <p>Even with templates, WordPress sites take 30-50 hours to build. Service pages, location pages, homepage, content population, SEO configuration.</p>
-              <p className="mt-3">Clients wait 4-6 weeks. Every week of delay is lost rankings and lost trust.</p>
+              <p>Reporting eats 3-5 hours per client per month. Most of that time is logging into platforms, pulling data, and writing the same summary email you wrote last month.</p>
+              <p className="mt-3">At 20 clients, that&apos;s a full-time role spent on copy-paste work.</p>
             </ProblemCallout>
 
             <h3 className="text-lg font-semibold text-[#010100] mb-3">What We Built</h3>
             <p className="text-sm text-[#545555] leading-relaxed mb-4">
-              A system that takes a client intake form, applies your existing templates, generates SEO-optimized content for every page, and provisions a fully-built WordPress site. Post-launch changes happen through a conversational AI agent - no backend access needed.
+              A system that pulls client data from all sources automatically, stores it in a unified database, analyzes week-over-week changes, and pre-writes personalized email reports. Your team reviews, edits if needed, and clicks send.
             </p>
             <p className="text-sm font-medium text-[#010100] mb-6">
-              Time reduction: 40+ hours → under 5 minutes
+              Time reduction: 4+ hours per client → 15 minutes of review
             </p>
 
             <h3 className="text-lg font-semibold text-[#010100] mb-3">Technical Overview</h3>
             <SimpleTable 
               headers={['Phase', 'What Happens']}
               rows={[
-                ['Input', 'Client completes intake form: branding assets, service list, target locations, business info'],
-                ['Processing', 'AI generates SEO-optimized content for each page, applies brand voice, populates Elementor templates'],
-                ['Output', 'WordPress site provisioned on hosting, all pages built and populated, SSL configured, site live'],
+                ['Input', 'Scheduled workflow pulls data from GA4, Search Console, SEMrush/SE Ranking, local rank trackers, and project management tool'],
+                ['Processing', 'AI analyzes week-over-week changes, identifies wins worth highlighting, surfaces key insights, and writes personalized summary in your voice'],
+                ['Output', 'Email draft created in Gmail, queued for review. Historical data stored for trend analysis. One-click approve or edit before sending.'],
               ]}
             />
 
@@ -524,32 +523,33 @@ export default function AgencyAIInfrastructurePlaybook() {
             <SimpleTable 
               headers={['Tool', 'Purpose']}
               rows={[
-                ['n8n', 'Workflow orchestration and API coordination'],
-                ['WordPress', 'Content management system'],
-                ['Elementor', 'Template-based page generation'],
-                ['Claude API', 'Content generation with brand voice'],
-                ['Cloudways or Kinsta', 'Managed WordPress hosting with API'],
-                ['Custom GPT', 'Conversational agent for post-launch changes'],
+                ['n8n', 'Scheduled data pulls and workflow orchestration'],
+                ['Supabase', 'Unified client data storage'],
+                ['Google Analytics API', 'Traffic, conversions, behavior data'],
+                ['Search Console API', 'Keyword rankings and impressions'],
+                ['SEMrush or SE Ranking API', 'Competitive rankings and backlink data'],
+                ['Claude API', 'Report writing and analysis'],
+                ['Gmail API', 'Draft creation and sending'],
               ]}
             />
 
             <h3 className="text-lg font-semibold text-[#010100] mb-3 mt-6">The Approach</h3>
+            <p className="text-sm text-[#545555] leading-relaxed mb-4">If you want to build something similar, here&apos;s the general approach:</p>
             <ol className="text-sm text-[#545555] space-y-3 mb-6 list-decimal list-inside">
-              <li><strong>Create your mega-template.</strong> Build one WordPress site with every page type you commonly use: homepage, about, contact, service pages, location pages. Use Elementor global widgets for elements that repeat.</li>
-              <li><strong>Map your custom fields.</strong> Identify what changes per client: logo, colors, business name, service descriptions, location details. These become form fields.</li>
-              <li><strong>Build the intake form.</strong> Collect everything needed to populate the template. Structure it so AI can parse the responses.</li>
-              <li><strong>Connect content generation.</strong> Claude takes intake responses and generates page content following your templates and brand guidelines.</li>
-              <li><strong>Automate the provisioning.</strong> Cloudways API clones your template site. WordPress REST API populates pages with generated content. DNS configuration completes the deployment.</li>
-              <li><strong>Add the change agent.</strong> A Custom GPT connected to the WordPress API allows post-launch edits through conversation rather than backend access.</li>
+              <li><strong>Map your data sources.</strong> List every platform you currently pull reporting data from. For most SEO agencies: Google Analytics, Search Console, rank tracker, project management tool.</li>
+              <li><strong>Create a unified client database.</strong> Each client gets a record. Each record stores their API connections and historical data.</li>
+              <li><strong>Build the data pull workflow.</strong> A scheduled workflow runs weekly, connects to each data source via API, pulls relevant metrics, writes them to your database.</li>
+              <li><strong>Create the AI analysis layer.</strong> Feed the pulled data into Claude with a prompt that compares this week to last week, identifies wins, flags concerns, and writes a summary.</li>
+              <li><strong>Set up email drafts.</strong> Have the workflow create a Gmail draft - not send automatically. Keeps humans in the loop for review.</li>
+              <li><strong>Add error handling.</strong> APIs fail. Accounts disconnect. Build in notifications when pulls fail so nothing slips through.</li>
             </ol>
-            <p className="text-sm text-[#545555] mb-6">Build time: 60-80 hours for a production-ready system. Saves 35+ hours per site after that.</p>
+            <p className="text-sm text-[#545555] mb-6">The first build takes 15-20 hours. After that, it runs on its own.</p>
 
             <h3 className="text-lg font-semibold text-[#010100] mb-3">Real-World Impact</h3>
             <ul className="text-sm text-[#545555] space-y-1">
-              <li>• <strong>Sites delivered same-day instead of 4-6 weeks</strong></li>
-              <li>• <strong>$3,000+/month saved on fulfillment payroll</strong></li>
-              <li>• <strong>Zero change request bottlenecks</strong> - clients can request updates through AI agent</li>
-              <li>• <strong>Capacity to onboard 6+ additional clients per month</strong> without hiring</li>
+              <li>• <strong>50+ hours saved per month</strong> across a 20-client roster</li>
+              <li>• <strong>Client retention increased by 3+ months average</strong> - consistent communication builds trust</li>
+              <li>• <strong>CSMs handle 3x more clients</strong> without burning out on report writing</li>
             </ul>
 
             <SectionNav currentSection="system-4" />
