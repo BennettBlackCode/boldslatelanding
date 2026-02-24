@@ -2,8 +2,7 @@
 
 import Link from 'next/link';
 import Container from '@/components/Container';
-import { useNavbarConfig } from '@/components/NavbarContext';
-import { 
+import {
   ArrowRight, 
   Zap, 
   FileText, 
@@ -90,11 +89,6 @@ const automations = [
 ];
 
 export default function CataloguePage() {
-  useNavbarConfig({
-    ctaText: 'Book A Discovery Call',
-    ctaLink: 'https://cal.com/boldslate/ai-systems-consultation',
-  });
-
   return (
     <div className="bg-white">
       {/* Hero Section */}

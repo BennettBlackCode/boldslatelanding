@@ -1,27 +1,5 @@
 'use client';
 
-/**
- * ============================================
- * 🎯 NAVBAR CUSTOMIZATION (for AI agents / future devs)
- * ============================================
- * 
- * This page inherits "Talk to us" from the playbook layout.
- * (See: src/app/playbook/layout.tsx using NavbarConfigSetter)
- * 
- * To OVERRIDE the navbar for THIS specific page, use the hook:
- * 
- * ```tsx
- * import { useNavbarConfig } from '@/components/NavbarContext';
- * 
- * // Inside the component:
- * useNavbarConfig({ showCta: false }); // Hides button entirely
- * useNavbarConfig({ ctaText: "Different Text" }); // Changes text
- * ```
- * 
- * See: src/components/NavbarContext.tsx for implementation details
- * ============================================
- */
-
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';

@@ -1,28 +1,3 @@
-/**
- * ============================================
- * 🎯 NAVBAR CUSTOMIZATION (for AI agents / future devs)
- * ============================================
- * 
- * This page uses the DEFAULT navbar: "Schedule A Call"
- * (inherited from the (main) layout)
- * 
- * To customize, convert to client component and use the hook:
- * 
- * ```tsx
- * 'use client';
- * import { useNavbarConfig } from '@/components/NavbarContext';
- * 
- * useNavbarConfig({ ctaText: "Book Demo", showCta: true });
- * ```
- * 
- * NOTE: This page is currently a Server Component (has metadata export).
- * To use the hook, you'd need to move metadata to a separate file or
- * use generateMetadata(), then add 'use client'.
- * 
- * See: src/components/NavbarContext.tsx for implementation details
- * ============================================
- */
-
 import Image from 'next/image';
 import Link from 'next/link';
 import Container from '@/components/Container';
