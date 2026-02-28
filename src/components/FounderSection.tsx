@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Container from './Container';
 import { motion } from 'motion/react';
 
@@ -16,8 +17,13 @@ export default function FounderSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5"
           >
-            <div className="aspect-[3/4] rounded-2xl bg-[#E5E2E0] flex items-center justify-center max-w-sm mx-auto lg:mx-0">
-              <span className="text-[#545555]/40 text-sm font-light">Photo</span>
+            <div className="aspect-[3/4] rounded-2xl bg-[#E5E2E0] overflow-hidden relative max-w-sm mx-auto lg:mx-0">
+              <Image
+                src="/bennettblack.jpg"
+                alt="Bennett Black, Founder of BoldSlate"
+                fill
+                className="object-cover object-top"
+              />
             </div>
           </motion.div>
 
