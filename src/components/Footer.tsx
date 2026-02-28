@@ -22,7 +22,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-lg text-[#545555] font-light leading-relaxed max-w-md">
-              We build software products that help marketing agencies scale — from AI website generation to lead databases and local SEO automation.
+              We build software that delivers outcomes, not dashboards. Products for marketing agencies that do the work — so your team can focus on clients.
             </p>
           </div>
 

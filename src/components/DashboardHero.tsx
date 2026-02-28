@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedGroup } from '@/components/ui/animated-group';
-import { AvatarCircles } from '@/components/ui/avatar-circles';
 
 const transitionVariants = {
   item: {
@@ -42,36 +41,15 @@ export default function DashboardHero() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
             <AnimatedGroup variants={transitionVariants}>
-              {/* Social Proof Badge */}
-              <div className="mb-8 flex flex-col items-center justify-center gap-3">
-                <div className="flex items-center gap-4">
-                  <AvatarCircles
-                    avatarUrls={[
-                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/lane%20image.png",
-                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/vince%20image.png",
-                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/frankie%20image.png",
-                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Jeremy%20Friedland/Jeremy%20Friedland%20Profile%20Pic%20-%20AutomatePro.jpg",
-                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Nicklaus%20Conley/Nicklaus%20Conley%20Profile%20Pic%20Tekton%20Growth.jpg",
-                    ]}
-                  />
-                  <div className="text-left">
-                    <div className="flex items-center gap-1 text-[#010100]">
-                      <span className="text-lg">★★★★★</span>
-                    </div>
-                    <p className="text-sm font-medium text-[#545555]">Trusted by Innovators</p>
-                  </div>
-                </div>
-              </div>
-
               {/* Main Heading */}
               <h1 className="text-[42px] md:text-[52px] lg:text-[60px] leading-[1.05] font-semibold text-[#010100] max-w-4xl mx-auto">
-                We build tools that help<br />
-                agencies scale
+                Software that does the work,{' '}
+                <span className="text-[#545555]">not just shows it to you</span>
               </h1>
 
               {/* Subheading */}
               <p className="mx-auto mt-8 max-w-2xl text-[20px] md:text-[24px] leading-[1.6] text-[#545555] font-light">
-                BoldSlate creates software products for marketing agencies — from AI website generation to lead databases and local SEO automation.
+                Most agency tools give you a dashboard and leave the work to you. We build products that deliver the finished outcome — so you can focus on your clients.
               </p>
             </AnimatedGroup>
 
@@ -96,8 +74,8 @@ export default function DashboardHero() {
                   size="lg"
                   className="rounded-xl px-8 py-6 text-lg font-medium"
                 >
-                  <Link href="#products">
-                    <span className="text-nowrap">Explore Our Products</span>
+                  <Link href="#product">
+                    <span className="text-nowrap">See What We&apos;re Building</span>
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>

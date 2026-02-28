@@ -15,8 +15,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Bold Slate | Software for Marketing Agencies",
-  description: "BoldSlate builds software products for marketing agencies — from AI website generation to lead databases and local SEO automation.",
+  title: "Bold Slate | Products That Do the Work",
+  description: "BoldSlate builds software that delivers outcomes, not dashboards. Products for marketing agencies that do the work — so your team can focus on clients.",
   icons: {
     icon: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Bold%20Slate%20Logo%20(3).png",
     apple: "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Bold%20Slate%20Logo%20(3).png",
