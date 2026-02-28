@@ -36,7 +36,7 @@ export default function FounderSection() {
             className="lg:col-span-7"
           >
             <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-semibold text-[#010100] leading-[1.1] mb-8">
-              Why we&apos;re building this
+              Why I&apos;m Building This
             </h2>
             <div className="space-y-5 text-lg text-[#545555] font-light leading-relaxed">
               <p>

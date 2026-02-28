@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AnimatedGroup } from '@/components/ui/animated-group';
+import { AvatarCircles } from '@/components/ui/avatar-circles';
 
 const transitionVariants = {
   item: {
@@ -41,9 +42,30 @@ export default function DashboardHero() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
             <AnimatedGroup variants={transitionVariants}>
+              {/* Social Proof Badge */}
+              <div className="mb-8 flex flex-col items-center justify-center gap-3">
+                <div className="flex items-center gap-4">
+                  <AvatarCircles
+                    avatarUrls={[
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/lane%20image.png",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/vince%20image.png",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/frankie%20image.png",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Jeremy%20Friedland/Jeremy%20Friedland%20Profile%20Pic%20-%20AutomatePro.jpg",
+                      "https://ojiytsplzyffdgobssut.supabase.co/storage/v1/object/public/Assets/Social%20Proof/Nicklaus%20Conley/Nicklaus%20Conley%20Profile%20Pic%20Tekton%20Growth.jpg",
+                    ]}
+                  />
+                  <div className="text-left">
+                    <div className="flex items-center gap-1 text-[#010100]">
+                      <span className="text-lg">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    </div>
+                    <p className="text-sm font-medium text-[#545555]">Trusted by Innovators</p>
+                  </div>
+                </div>
+              </div>
+
               {/* Main Heading */}
               <h1 className="text-[42px] md:text-[52px] lg:text-[60px] leading-[1.05] font-semibold text-[#010100] max-w-4xl mx-auto">
-                We replaced the dashboard with the deliverable
+                Save your agency thousands of hours of human time
               </h1>
 
               {/* Subheading */}

@@ -59,8 +59,8 @@ export default function ProductShowcase() {
           >
             <div className="aspect-[4/3] rounded-2xl bg-[#FAF8F7] border border-[#E5E2E0] overflow-hidden relative">
               <Image
-                src="/showcase-build.jpg"
-                alt="Websites built from ideas — abstract 3D visualization"
+                src="/1click-homepage.png"
+                alt="1ClickWebsite.ai — launch SEO WordPress sites in minutes"
                 fill
                 className="object-cover object-top"
               />
@@ -79,8 +79,8 @@ export default function ProductShowcase() {
           >
             <div className="aspect-[4/3] rounded-2xl bg-[#FAF8F7] border border-[#E5E2E0] overflow-hidden relative">
               <Image
-                src="/showcase-outcome.jpg"
-                alt="Finished websites across devices"
+                src="/showcase-outcome2.jpg"
+                alt="Website pages delivered across devices"
                 fill
                 className="object-cover object-top"
               />
@@ -97,19 +97,9 @@ export default function ProductShowcase() {
             <h3 className="text-[24px] md:text-[32px] font-semibold text-[#010100] leading-[1.15] mb-6">
               The outcome, not the interface
             </h3>
-            <p className="text-lg md:text-xl text-[#545555] font-light leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-[#545555] font-light leading-relaxed">
               Most software gives you a dashboard and calls it a day. You still need to hire someone to actually do the work. We think that&apos;s backwards. Our products deliver the finished result — the website, the listing, the campaign — so your team can focus on clients, not clicking buttons.
             </p>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="p-5 rounded-xl bg-[#FAF8F7]">
-                <p className="text-[28px] font-semibold text-[#010100]">Minutes</p>
-                <p className="text-sm text-[#545555] font-light mt-1">Not weeks to deliver</p>
-              </div>
-              <div className="p-5 rounded-xl bg-[#FAF8F7]">
-                <p className="text-[28px] font-semibold text-[#010100]">Zero</p>
-                <p className="text-sm text-[#545555] font-light mt-1">Extra hires needed</p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </Container>
