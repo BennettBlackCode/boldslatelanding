@@ -56,7 +56,7 @@ export default function CallToAction() {
           </div>
 
           {/* Main Heading */}
-          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] font-semibold text-white leading-[1.1] tracking-tight mb-6">
+          <h2 className="text-[32px] md:text-[44px] lg:text-[56px] font-semibold !text-white leading-[1.1] tracking-tight mb-6">
             Let&apos;s Talk
           </h2>
 

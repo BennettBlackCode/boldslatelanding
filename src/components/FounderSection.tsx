@@ -9,7 +9,7 @@ export default function FounderSection() {
     <section className="py-24 lg:py-32 bg-[#FAF8F7]">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Photo */}
+          {/* Editorial Image */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -17,12 +17,12 @@ export default function FounderSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5"
           >
-            <div className="aspect-[3/4] rounded-2xl bg-[#E5E2E0] overflow-hidden relative max-w-sm mx-auto lg:mx-0">
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden relative max-w-sm mx-auto lg:mx-0">
               <Image
-                src="/bennettblack.jpg"
-                alt="Bennett Black, Founder of BoldSlate"
+                src="/founder-working.jpg"
+                alt="Building software that does the work"
                 fill
-                className="object-cover object-top"
+                className="object-cover"
               />
             </div>
           </motion.div>
@@ -49,9 +49,19 @@ export default function FounderSection() {
                 That&apos;s when it clicked. The software industry is full of dashboards. What agencies actually need are products that do the work — not just show you where the work is. That&apos;s what BoldSlate builds. Software that delivers the outcome, not just the interface.
               </p>
             </div>
-            <div className="mt-10 pt-8 border-t border-[#E5E2E0]">
-              <p className="text-xl font-semibold text-[#010100]">Bennett Black</p>
-              <p className="text-base text-[#545555] font-light mt-1">Founder, BoldSlate</p>
+            <div className="mt-10 pt-8 border-t border-[#E5E2E0] flex items-center gap-4">
+              <div className="w-14 h-14 rounded-full overflow-hidden relative shrink-0">
+                <Image
+                  src="/bennettblack.jpg"
+                  alt="Bennett Black"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
+              <div>
+                <p className="text-xl font-semibold text-[#010100]">Bennett Black</p>
+                <p className="text-base text-[#545555] font-light">Founder, BoldSlate</p>
+              </div>
             </div>
           </motion.div>
         </div>
