@@ -43,8 +43,7 @@ export default function DashboardHero() {
             <AnimatedGroup variants={transitionVariants}>
               {/* Main Heading */}
               <h1 className="text-[42px] md:text-[52px] lg:text-[60px] leading-[1.05] font-semibold text-[#010100] max-w-4xl mx-auto">
-                Software that does the work,{' '}
-                <span className="text-[#545555]">not just shows it to you</span>
+                We replaced the dashboard with the deliverable
               </h1>
 
               {/* Subheading */}
